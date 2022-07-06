@@ -1,0 +1,10 @@
+#Login: 
+
+ssh fpi10kg@KewHPC
+
+#Pathways to mycology lab:
+#/data is better for analysis but the files don't get saved:
+ /data/projects/gaya_lab/Frances
+
+#/science/ used for saving work - should backup this folder daily
+ /science/projects/gaya_lab/Frances
