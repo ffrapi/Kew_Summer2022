@@ -27,9 +27,12 @@ $ cd bedtools2
 #STEP 6: 
 
 #6.	Alignment and phylogenetic analysis: 
-           # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (script1.sh)
+           # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (Align.sh)
                         #i.	Visually check the alignment with AliView to make sure it’s sensible
                         
-#b.	Trim and concatenate alingments using Rowenas scripts
+#b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
+
 #c.	Run RAxML-NG for phylogenetic analysis
+
+
 #d.	Visualize results in FigTree (use sensible outgroups)
