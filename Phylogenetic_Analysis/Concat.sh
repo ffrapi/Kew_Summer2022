@@ -3,7 +3,8 @@
 #SBATCH -p all
 #SBATCH -J Concat_Neoc_job
 #SBATCH -t 0-3:00:00
-#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria
+#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria/concat.out
+#SBATCH -e /data/projects/gaya_lab/Frances/Neocucurbitaria/concat.err
 
 #Concatenate gene alignments
 
