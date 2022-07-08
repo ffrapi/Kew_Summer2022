@@ -3,12 +3,12 @@
 #SBATCH -p all
 #SBATCH -J Trim_Neoc_job
 #SBATCH -t 0-3:00:00
-#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria
+#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria/trim.out
+#SBATCH -e /data/projects/gaya_lab/Frances/Neocucurbitaria/trim.err
 
 #Trim alignments
 
-module load anaconda3
-conda activate trimal
+module load trimal
 
 trimal -in marker_seqs_ITS.fa -fasta -gappyout > marker_seqs_ITS_alntrimmed.fa
 trimal -in marker_seqs_LSU.fa -fasta -gappyout > marker_seqs_LSU_alntrimmed.fa
