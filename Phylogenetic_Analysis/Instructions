@@ -1,49 +1,20 @@
-Phylogenetic analysis RA MANUAL:
 
-1.	Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest
-2.	Do more literature digging to cross check sampling – find papers with more species from the taxon of interest
-3.	Check if alignments are available on online databases
-      a.	If NOT available, extract accession numbers from tables in the papers and create a spreadsheet with all species of interest, including their accession numbers for each gene region
-4.	Use R script “GenBank_seq_pull_Neocurcubitaria_FP.r” to extract sequences from GenBank accession numbers for each gene region separately
-      a.	Using this script, a fasta file for each gene region will be created and ready for alignment
+#STEP 5: Genepull modified scripts: 
 
-
-
-Rename files extracted from Genbank:
-sed basically works like this:
- 
-sed 's/find this pattern/replace it with this pattern/'
- 
-The first step is to remove the accessions before the names:
- 
-sed 's/[^> ]* //' marker_seqs_ITS.fa > tmp.fa
- 
-Breakdown of how this works:
- 
-[^> ]*  - tells sed to find the beginning of the line (^) that is followed by a colon and then everything up to the first space (i.e., the accession)
-// - there is nothing between the final two slashes, meaning that we want to replace what sed finds (the accession) with nothing
- 
-The next step, getting rid of everything after the name/strain info, is less neat because the headers aren't consistent and have different wording. From glancing at the ITS ones though, it looks like the most common next words after the info we want to keep are: 18S, small, internal, genomic and genes. To remove those words and everything after them, we can do:
- 
-sed 's/18S.*//' tmp.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' > tmp2.fa
- 
-I there are any others you spot for other genes, you can add them to the end of that series of seds, just before ‘> tmp2.da’. This hopefully deals with most of the headers, but it's likely there will be a couple that still need manually tweaking. Also there will still be the slightly time-consuming job of cross checking that headers match across genes. But hopefully these at least speed that process up!
-
-
-Genepull modified scripts: 
-1)	To download GENEPULL:
+#1)To download GENEPULL:
 wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
 
-2)	Make script executable: 
+#2)Make script executable: 
 chmod +x GenePull
 
-BLAST + Bedtools need to be installed for genepull to work
-BLAST is already installed but to install bedtools: 
+#BLAST + Bedtools need to be installed for genepull to work
+#BLAST is already installed but to install bedtools: 
+
 wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2.29.1.tar.gz
 $ tar -zxvf bedtools-2.29.1.tar.gz
 $ cd bedtools2
 
-3)	Extract gene from assembly:
+#3)Extract gene from assembly:
 
 ./GenePull -a assembly.fa -g Neoc.LSU.fa -o Neoc.LSU_result
 ./GenePull -a assembly.fa -g Neoc.ITS.fa -o Neoc.ITS_result
@@ -53,3 +24,12 @@ $ cd bedtools2
 ./GenePull -a assembly.fa -g Neoc.TUB2.fa -o Neoc.TUB2_result
 
 
+#STEP 6: 
+
+#6.	Alignment and phylogenetic analysis: 
+           # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (script1.sh)
+                        #i.	Visually check the alignment with AliView to make sure it’s sensible
+                        
+#b.	Trim and concatenate alingments using Rowenas scripts
+#c.	Run RAxML-NG for phylogenetic analysis
+#d.	Visualize results in FigTree (use sensible outgroups)
