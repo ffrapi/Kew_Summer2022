@@ -32,7 +32,7 @@ $ cd bedtools2
                         
 #b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
 
-#c.	Run RAxML-NG for phylogenetic analysis
+#c.	Run RAxML-NG for phylogenetic analysis (raxml.sh)
 
 
 #d.	Visualize results in FigTree (use sensible outgroups)
