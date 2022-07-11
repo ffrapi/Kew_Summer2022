@@ -14,15 +14,23 @@ wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2.29.
 $ tar -zxvf bedtools-2.29.1.tar.gz
 $ cd bedtools2
 
+
+# Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this: 
+module load blast
+module load bedtools/2.30.0
+
+
 #3)Extract gene from assembly:
 
-./GenePull -a assembly.fa -g Neoc.LSU.fa -o Neoc.LSU_result
-./GenePull -a assembly.fa -g Neoc.ITS.fa -o Neoc.ITS_result
-./GenePull -a assembly.fa -g Neoc.SSU.fa -o Neoc.SSU_result
-./GenePull -a assembly.fa -g Neoc.RPB2.fa -o Neoc.RPB2_result
-./GenePull -a assembly.fa -g Neoc.TEF1.fa -o Neoc.TEF1_result
-./GenePull -a assembly.fa -g Neoc.TUB2.fa -o Neoc.TUB2_result
+./GenePull -a assembly.fa -g marker_seqs_LSU.fa -o Neoc.LSU_result
+./GenePull -a assembly.fa -g marker_seqs_ITS.fa -o Neoc.ITS_result
+./GenePull -a assembly.fa -g marker_seqs_SSU.fa -o Neoc.SSU_result
+./GenePull -a assembly.fa -g marker_seqs_RPB2.fa -o Neoc.RPB2_result
+./GenePull -a assembly.fa -g marker_seqs_TEF1.fa -o Neoc.TEF1_result
+./GenePull -a assembly.fa -g marker_seqs_TUB2.fa -o Neoc.TUB2_result
 
+
+#How many hits to choose and with what criteria combinations? e-value and bitscores (asked rowena but at the time being just used highest bitscore and 0 e-value)
 
 #STEP 6: 
 
