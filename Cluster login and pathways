@@ -8,3 +8,7 @@ ssh fpi10kg@KewHPC
 
 #/science/ used for saving work - should backup this folder daily
  /science/projects/gaya_lab/Frances
+
+
+#transferring files
+rsync -avP fpi10kg@kewhpc://beegfs/scratch/scratchFS/projects/gaya_lab/Frances/Neocucurbitaria/endophyte_genes/Aliview/ /C:\Users\fpi10kg\Documents
