@@ -29,6 +29,6 @@ raxml-ng --all \
 #Check convergence
 
 raxml-ng --bsconverge \
-         --bs-trees Neoc.raxml.bootstraps \
+         --bs-trees 1000 \
          --prefix Neoc_convergence_test \
          --seed 2
