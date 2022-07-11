@@ -36,7 +36,8 @@ module load bedtools/2.30.0
 
 #6.	Alignment and phylogenetic analysis: 
            # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (Align.sh)
-                        #i.	Visually check the alignment with AliView to make sure it’s sensible
+                        #i. Transfer final alignment files to computer 
+                        #i. Visually check the alignment with AliView to make sure it’s sensible
                         
 #b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
 
