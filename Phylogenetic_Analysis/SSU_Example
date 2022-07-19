@@ -1,0 +1,15 @@
+#Trim script: 
+
+#!/bin/bash
+#SBATCH -c 1
+#SBATCH -p all
+#SBATCH -J Trim_SSU_job
+#SBATCH -t 0-3:00:00
+#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria/endophyte_genes/align/trimSSU.out
+#SBATCH -e /data/projects/gaya_lab/Frances/Neocucurbitaria/endophyte_genes/align/trimSSU.err
+
+#Trim alignments
+
+module load trimal
+
+trimal -in SSU_aln_rename_FP.fa -fasta -gappyout > marker_seqs_SSU_alntrimmed_FP.fa
