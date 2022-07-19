@@ -38,6 +38,14 @@ module load bedtools/2.30.0
            # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (Align.sh)
                         #i. Transfer final alignment files to computer 
                         #i. Visually check the alignment with AliView to make sure it’s sensible
+                        #Remove duplicates (saved as aln.edit.fa)
+                        #Tranfser back to computer clusters
+                        #Rename using sed
+                        
+                        sed 's/[^> ]* //' marker_seqs_SSU_aln_edit.fa > SSU_aln_rename.fa
+                        #This command line removes the accession number
+                        
+ sed 's/18S.*//' SSU_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' > SSU_aln_rename_FP.fa                        
                         
 #b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
 
