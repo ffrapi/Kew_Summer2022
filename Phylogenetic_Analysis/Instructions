@@ -46,7 +46,7 @@ module load bedtools/2.30.0
                         #This command line removes the accession number
                         
  sed 's/18S.*//' SSU_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' > SSU_aln_rename_FP.fa                        
-                        
+           cat SSU_aln_rename_FP1.fa | sed 's/ /_/g' > SSU_aln_rename_FP2.fa             
 #b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
 
 #c.	Run RAxML-NG for phylogenetic analysis (raxml.sh)
