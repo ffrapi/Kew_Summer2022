@@ -1,0 +1,2 @@
+#Renaming files: 
+for filename in raxml*; do newname=`echo $filename | sed 's/raxml/05_raxml/g'`; mv $filename $newname; done
