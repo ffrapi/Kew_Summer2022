@@ -1,12 +1,12 @@
-#Phylogenetic analysis: 
+# Phylogenetic analysis: 
 
-###1) Individual gene trees
-###2) Concatenated tree
+### 1) Individual gene trees
+### 2) Concatenated tree
 
 
-    ##1) Individual gene trees
+   ## 1) Individual gene trees
 
-###Summary of steps: 
+### Summary of steps: 
 
        a) Creating alignments for each gene using data from literature
                 i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
@@ -19,7 +19,7 @@
 
                 v) Use R script “GenBank_seq_pull_Neocurcubitaria_FP.r” to extract sequences from GenBank accession numbers for each gene region separately 
 
-                  *Using this script, a fasta file for each gene region will be created and ready for alignment*
+                  **Using this script, a fasta file for each gene region will be created and ready for alignment**
         
         
         
