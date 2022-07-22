@@ -1,9 +1,91 @@
-Phylogenetic analysis: 
+#Phylogenetic analysis: 
 
-1) Individual gene trees
-2) Concatenated tree
+###1) Individual gene trees
+###2) Concatenated tree
 
 
-1) Individual gene trees
+    ##1) Individual gene trees
 
-Summary of steps: 
+###Summary of steps: 
+
+       a) Creating alignments for each gene using data from literature
+                i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
+
+                ii) Do more literature digging to cross check sampling – find papers with more species from the taxon of interest 
+
+                iii) Check if alignments are available on online databases 
+
+                iiii) If NOT available, extract accession numbers from tables in the papers and create a spreadsheet with all species of interest, including their accession numbers for each gene region (Example spreadsheet: https://rbgkew.sharepoint.com/:x:/s/KewMycology/EaX-y-T3SYVFqwsKF7p8rSYBcHWXjfwh5czLr-z7XnMvjQ?e=BaeK07) **Make sure to include sensible outgroups in the alignment to root the trees.
+
+                v) Use R script “GenBank_seq_pull_Neocurcubitaria_FP.r” to extract sequences from GenBank accession numbers for each gene region separately 
+
+                  *Using this script, a fasta file for each gene region will be created and ready for alignment*
+        
+        
+        
+        #1)To download GENEPULL:
+wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
+
+#2)Make script executable: 
+chmod +x GenePull
+
+#BLAST + Bedtools need to be installed for genepull to work
+#BLAST is already installed but to install bedtools: 
+
+wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2.29.1.tar.gz
+$ tar -zxvf bedtools-2.29.1.tar.gz
+$ cd bedtools2
+
+
+# Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this: 
+module load blast
+module load bedtools/2.30.0
+
+
+#3)Extract gene from assembly:
+
+./GenePull -a assembly.fa -g marker_seqs_LSU.fa -o Neoc.LSU_result
+./GenePull -a assembly.fa -g marker_seqs_ITS.fa -o Neoc.ITS_result
+./GenePull -a assembly.fa -g marker_seqs_SSU.fa -o Neoc.SSU_result
+./GenePull -a assembly.fa -g marker_seqs_RPB2.fa -o Neoc.RPB2_result
+./GenePull -a assembly.fa -g marker_seqs_TEF1.fa -o Neoc.TEF1_result
+./GenePull -a assembly.fa -g marker_seqs_TUB2.fa -o Neoc.TUB2_result
+
+
+#How many hits to choose and with what criteria combinations? e-value and bitscores (asked rowena but at the time being just used highest bitscore and 0 e-value)
+
+#STEP 6: 
+
+#6.	Alignment and phylogenetic analysis: 
+           # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (Align.sh)
+                        #i. Transfer final alignment files to computer 
+                        #i. Visually check the alignment with AliView to make sure it’s sensible
+                        #Remove duplicates (saved as aln.edit.fa)
+                        #Tranfser back to computer clusters
+                        #Rename using sed
+                        
+                        sed 's/[^> ]* //' marker_seqs_SSU_aln_edit.fa > SSU_aln_rename.fa
+                        #This command line removes the accession number
+                        
+ sed 's/18S.*//' SSU_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' > SSU_aln_rename_FP.fa                        
+           cat SSU_aln_rename_FP1.fa | sed 's/ /_/g' > SSU_aln_rename_FP2.fa    
+           
+           
+           sed 's/[^> ]* //' marker_seqs_RPB2_aln_edit.fa>  RPB2_aln_rename.fa
+	sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' | sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
+cat RPB2_aln_rename_FP.fa | sed 's/ /_/g' > RPB2_aln_rename_FP1.fa
+
+           
+           
+           
+           
+           
+           
+#b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
+
+#c.	Run RAxML-NG for phylogenetic analysis (raxml.sh)
+
+
+#d.	Visualize results in FigTree (use sensible outgroups)
+
+
