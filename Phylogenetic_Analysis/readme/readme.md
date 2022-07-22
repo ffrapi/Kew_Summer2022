@@ -8,6 +8,7 @@
 
 ### Summary of steps: 
 
+   ```
        a) Creating alignments for each gene using data from literature
                 i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
 
@@ -20,7 +21,8 @@
                 v) Use R script “GenBank_seq_pull_Neocurcubitaria_FP.r” to extract sequences from GenBank accession numbers for each gene region separately 
 
                   **Using this script, a fasta file for each gene region will be created and ready for alignment**
-        
+       ```
+ 
         
         
         b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. 
