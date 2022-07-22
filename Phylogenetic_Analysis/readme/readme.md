@@ -23,26 +23,16 @@
         
         
         
-        #1)To download GENEPULL:
-wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
+        b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. 
+		i) To download GENEPULL: wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
+		ii) Make script executable: chmod +x GenePull
+		iii) BLAST + Bedtools need to be installed for genepull to work.
+   **Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this:** 
 
-#2)Make script executable: 
-chmod +x GenePull
+**module load blast
+module load bedtools/2.30.0**
 
-#BLAST + Bedtools need to be installed for genepull to work
-#BLAST is already installed but to install bedtools: 
-
-wget https://github.com/arq5x/bedtools2/releases/download/v2.29.1/bedtools-2.29.1.tar.gz
-$ tar -zxvf bedtools-2.29.1.tar.gz
-$ cd bedtools2
-
-
-# Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this: 
-module load blast
-module load bedtools/2.30.0
-
-
-#3)Extract gene from assembly:
+		iiii)Extract gene from assembly:
 
 ./GenePull -a assembly.fa -g marker_seqs_LSU.fa -o Neoc.LSU_result
 ./GenePull -a assembly.fa -g marker_seqs_ITS.fa -o Neoc.ITS_result
