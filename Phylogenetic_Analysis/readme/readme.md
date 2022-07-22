@@ -9,7 +9,9 @@
 ### Summary of steps: 
 
 ````
-       **a) Creating alignments for each gene using data from literature**
+
+** ****a) Creating alignments for each gene using data from literature******
+
                 i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
 
                 ii) Do more literature digging to cross check sampling – find papers with more species from the taxon of interest 
