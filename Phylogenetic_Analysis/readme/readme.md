@@ -10,7 +10,7 @@
 
 ````
 
-** ****a) Creating alignments for each gene using data from literature******
+a) Creating alignments for each gene using data from literature
 
                 i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
 
@@ -31,9 +31,8 @@
 		i) To download GENEPULL: wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
 		ii) Make script executable: chmod +x GenePull
 		iii) BLAST + Bedtools need to be installed for genepull to work.
-   **Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this:** 
-
-**module load blast
+   *Both bedtools and blast are installed on kew clusters so ignore step 1+2 and do this:*
+module load blas
 module load bedtools/2.30.0**
 
 		iiii)Extract gene from assembly:
