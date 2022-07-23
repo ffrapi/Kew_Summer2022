@@ -11,7 +11,6 @@
 ````
 
 a) Creating alignments for each gene using data from literature
-
                 i) Do a literature search to find papers undertaking a phylogenetic analysis within the taxon of the species of interest 
 
                 ii) Do more literature digging to cross check sampling – find papers with more species from the taxon of interest 
@@ -24,10 +23,9 @@ a) Creating alignments for each gene using data from literature
 
                   **Using this script, a fasta file for each gene region will be created and ready for alignment**
 ````
- 
-        
+  **b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. **  
 ````        
-        b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. 
+    
 		i) To download GENEPULL: wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
 		ii) Make script executable: chmod +x GenePull
 		iii) BLAST + Bedtools need to be installed for genepull to work.
@@ -48,6 +46,7 @@ a) Creating alignments for each gene using data from literature
 -Marker_seqs_X.fa is the assembly of each gene extracted in the first step for each gene X
 -Neoc.X_result are the results from GenePull - i.e. the blast hits from NBCI database that is almost identical to the endophyte genome of interest.
 
+````
 *Results for some genes could have mutliple hits for multiple reasons: 
 	1) Contamination from other species present in the culture - called ‘blobtools’ that helps us visualise how much contamination there might be by mapping the assembly to the entire genbank database. 
 		Solution: Use the tool called blobtools to visualise the amount of contamination that might be present in the culture by mapping the assembly to the 	  	     entire genbank database
