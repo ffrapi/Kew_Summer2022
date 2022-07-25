@@ -108,3 +108,4 @@ Modify raxml.sh file accordingly and submit
 **i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups
 
 
+ ## 2) Concatenated gene tree
