@@ -120,4 +120,6 @@ Modify raxml.sh file accordingly and submit
 	        ii. Copy .support files from raxml to local computer 
  ##### d) Visualize .support files in FigTree using sensible outgroups
  
+ [Phylogenetics_Steps_Diagram.pptx](https://github.com/ffrapi/Kew_Summer2022/files/9182191/Phylogenetics_Steps_Diagram.pptx)
+
  
