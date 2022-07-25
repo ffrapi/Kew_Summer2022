@@ -3,13 +3,12 @@
 ### 1) Individual gene trees
 ### 2) Concatenated tree
 
-![Phylogenetics_Steps_Diagram](https://user-images.githubusercontent.com/70023430/180815841-e46cc6a1-d1b3-4485-a476-5cd6801949dc.png)
+![Phylogenetics_Steps_Diagram_S](https://user-images.githubusercontent.com/70023430/180816988-d1b5c218-a6e7-40c9-8bc8-feb27cd58aa8.png)
 
 
    ## 1) Individual gene trees
 
 ### Summary of steps: 
-
 
 ##### a) Creating alignments for each gene using data from literature
 
@@ -123,5 +122,6 @@ Modify raxml.sh file accordingly and submit
  ##### d) Visualize .support files in FigTree using sensible outgroups
  
 
+![Phylogenetics_Steps_Diagram](https://user-images.githubusercontent.com/70023430/180815841-e46cc6a1-d1b3-4485-a476-5cd6801949dc.png)
 
  
