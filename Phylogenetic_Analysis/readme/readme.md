@@ -35,15 +35,15 @@ a) Creating alignments for each gene using data from literature
 
 		iiii)Extract gene from assembly:
 
-./GenePull -a assembly.fa -g marker_seqs_LSU.fa -o Neoc.LSU_result
-./GenePull -a assembly.fa -g marker_seqs_ITS.fa -o Neoc.ITS_result
-./GenePull -a assembly.fa -g marker_seqs_SSU.fa -o Neoc.SSU_result
-./GenePull -a assembly.fa -g marker_seqs_RPB2.fa -o Neoc.RPB2_result
-./GenePull -a assembly.fa -g marker_seqs_TEF1.fa -o Neoc.TEF1_result
-./GenePull -a assembly.fa -g marker_seqs_TUB2.fa -o Neoc.TUB2_result
+./GenePull -a assembly.fa -g LSU.fa -o Neoc.LSU_result
+./GenePull -a assembly.fa -g ITS.fa -o Neoc.ITS_result
+./GenePull -a assembly.fa -g SSU.fa -o Neoc.SSU_result
+./GenePull -a assembly.fa -g RPB2.fa -o Neoc.RPB2_result
+./GenePull -a assembly.fa -g TEF1.fa -o Neoc.TEF1_result
+./GenePull -a assembly.fa -g TUB2.fa -o Neoc.TUB2_result
 
 -Assembly.fa is the endophyte genome that we are looking to taxonomise
--Marker_seqs_X.fa is the assembly of each gene extracted in the first step for each gene X
+-g option should be the sequence of a single gene picked out randomly from the assembly created in the first step
 -Neoc.X_result are the results from GenePull - i.e. the blast hits from NBCI database that is almost identical to the endophyte genome of interest.
 ````
 ````
