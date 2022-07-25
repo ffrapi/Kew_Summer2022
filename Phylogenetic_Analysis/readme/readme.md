@@ -111,3 +111,13 @@ Modify raxml.sh file accordingly and submit
 
  ## 2) Concatenated gene tree
  ### Summary of steps: 
+ 
+ ##### Steps a-e are exactly the same as the individual gene trees, up to the trimming step:
+ ##### a) Use the Trim.sh script (NOT the Trimconcat.sh script) to trim the aligmnets of each gene separately
+ ##### b) Use the Concat_allgenes.sh script to concatenate all the alignments together (Modify -e, -o, file names etc accordingly)
+ ##### c) Use the raxml.sh script to run a concatenated phylogenetic analysis
+ 		 i. Check the convergenceTest.log file to see if the trees have converged within 1000 bootstraps
+	        ii. Copy .support files from raxml to local computer 
+ ##### d) Visualize .support files in FigTree using sensible outgroups
+ 
+ 
