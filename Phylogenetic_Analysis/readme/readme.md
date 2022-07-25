@@ -57,7 +57,7 @@ a) Creating alignments for each gene using data from literature
 		Solution: Keep all the hits, run raxml for just that alignment to see where the different copies fall in the gene tree.
 ````
 
-**c) Open both assembly of genes (Step a) and the extracted sequences (Step b) of interest (from GenePull) in AliView
+**c) Open both assembly of genes (Step a) and the extracted sequences (Step b) of interest (from GenePull) in AliView**
 
 ````
 	1) Copy and paste the extracted sequence of interest (Step b) into the assembly of genes (Step a)
@@ -70,42 +70,41 @@ a) Creating alignments for each gene using data from literature
 ````
 *To transfer files from local computer to cluster, I prefer to use FileZilla. Instructions on transferring files from and to the cluster are found here: https://rbg-kew-bioinformatics-utils.readthedocs.io/en/latest/kewhpc/ *
 
-**d) Alignment using MAFFT
+**d) Rename files**
 
 ````
-````
-#STEP 6: 
+The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. strain, RNA etc), the third command adds an underscore ('_') where there are spaces in the file (because Trimmomatic cuts out the second part of the species name if spaces exist)
 
-#6.	Alignment and phylogenetic analysis: 
-           # a.	Alignment using MAFFT in Kew clusters using scripts found on Rowenas GitHub page (Align.sh)
-                        #i. Transfer final alignment files to computer 
-                        #i. Visually check the alignment with AliView to make sure it’s sensible
-                        #Remove duplicates (saved as aln.edit.fa)
-                        #Tranfser back to computer clusters
-                        #Rename using sed
-                        
-                        sed 's/[^> ]* //' marker_seqs_SSU_aln_edit.fa > SSU_aln_rename.fa
-                        #This command line removes the accession number
-                        
- sed 's/18S.*//' SSU_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' > SSU_aln_rename_FP.fa                        
-           cat SSU_aln_rename_FP1.fa | sed 's/ /_/g' > SSU_aln_rename_FP2.fa    
-           
-           
-           sed 's/[^> ]* //' marker_seqs_RPB2_aln_edit.fa>  RPB2_aln_rename.fa
-	sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' | sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
+ sed 's/[^> ]* //' marker_seqs_RPB2_aln_edit.fa>  RPB2_aln_rename.fa
+ sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' |  sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
 cat RPB2_aln_rename_FP.fa | sed 's/ /_/g' > RPB2_aln_rename_FP1.fa
+````
+**e) Alignment using MAFFT
 
-           
-           
-           
-           
-           
-           
-#b.	Trim and concatenate alingments using Rowenas scripts (Trim.sh), (Concat.sh)
+````
+	1) Run the script align.sh in the clusters
+		i. Ensure that -i and -o show the correct pathways to the cluster folders where the renamed alignments are
+		ii. Make sure that the renamed aligments are correctly named for the script to run
+	2) After alignment is complete, transfer files to local computer and visualize in Aliview to ensure that alignments look sensible before continuing on with the next steps
+````
 
-#c.	Run RAxML-NG for phylogenetic analysis (raxml.sh)
+**f) Trim and concatenate alignments (Trim.sh), (Concat.sh)
 
+````
+You can either do the trim and concat separately (Trim.sh) and (Concat.sh) or together (Trimconcat.sh)
 
-#d.	Visualize results in FigTree (use sensible outgroups)
+	1) Modify scripts accordingly, especially pathway -i, -o and file names
+	2) Copy and paste AMAS.py into the cluster folder where trimming and concatenating of sequences will take place
+	3) Run scripts
+````
+      
+**g) Run RaxML for genes separately:
+
+````
+Modify raxml.sh file accordingly and submit
+````
+           
+**h) Check the convergenceTest.log file to see if the trees have converged within 1000 bootstraps
+**i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups
 
 
