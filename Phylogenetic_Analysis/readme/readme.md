@@ -3,6 +3,8 @@
 ### 1) Individual gene trees
 ### 2) Concatenated tree
 
+![Phylogenetics_Steps_Diagram](https://user-images.githubusercontent.com/70023430/180815841-e46cc6a1-d1b3-4485-a476-5cd6801949dc.png)
+
 
    ## 1) Individual gene trees
 
@@ -120,8 +122,6 @@ Modify raxml.sh file accordingly and submit
 	        ii. Copy .support files from raxml to local computer 
  ##### d) Visualize .support files in FigTree using sensible outgroups
  
- 
- ![Phylogenetics_Steps_Diagram.pptx](https://github.com/ffrapi/Kew_Summer2022/files/9182191/Phylogenetics_Steps_Diagram.pptx)
-![Phylogenetics_Steps_Diagram](https://user-images.githubusercontent.com/70023430/180805784-998749e4-019d-40d5-a7d5-bae2d7e93a62.png)
+
 
  
