@@ -56,6 +56,24 @@ a) Creating alignments for each gene using data from literature
 	3) The taxon actually has multiple copies for that gene. (can check paralogues, multi-copy genes and their use in phylogenetics).
 		Solution: Keep all the hits, run raxml for just that alignment to see where the different copies fall in the gene tree.
 ````
+
+**c) Open both assembly of genes (Step a) and the extracted sequences (Step b) of interest (from GenePull) in AliView
+
+````
+	1) Copy and paste the extracted sequence of interest (Step b) into the assembly of genes (Step a)
+	2) Do a fast realignment in AliView to ensure that the alignment looks sensible. Two outcomes could occur during this step: 
+		i. The extracted sequence of interest might not align properly
+			Solution: Reverse complement the extracted sequence of interest and realign again.
+		ii. The extracted sequence of interest aligns properly
+	3) When the realignment looks sensible, save as .fa and transfer from local computer to cluster
+	4) Continue with next steps
+````
+*To transfer files from local computer to cluster, I prefer to use FileZilla. Instructions on transferring files from and to the cluster are found here: https://rbg-kew-bioinformatics-utils.readthedocs.io/en/latest/kewhpc/ *
+
+**d) Alignment using MAFFT
+
+````
+````
 #STEP 6: 
 
 #6.	Alignment and phylogenetic analysis: 
