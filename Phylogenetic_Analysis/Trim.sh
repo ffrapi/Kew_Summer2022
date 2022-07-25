@@ -18,21 +18,3 @@ trimal -in marker_seqs_Tef1.fa -fasta -gappyout > marker_seqs_Tef1_alntrimmed.fa
 trimal -in marker_seqs_Tub2.fa -fasta -gappyout > marker_seqs_Tub2_alntrimmed.fa
 
 
-#!/bin/bash
-#SBATCH -c 1
-#SBATCH -p all
-#SBATCH -J Trim_Neoc_job
-#SBATCH -t 0-3:00:00
-#SBATCH -o /data/projects/gaya_lab/Frances/Neocucurbitaria/endophyte_genes/align/trim.out
-#SBATCH -e /data/projects/gaya_lab/Frances/Neocucurbitaria/endophyte_genes/align/trim.err
-
-#Trim alignments
-
-module load trimal
-
-trimal -in marker_seqs_ITS_aln.fa -fasta -gappyout > marker_seqs_ITS_alntrimmed.fa
-trimal -in marker_seqs_LSU_aln.fa -fasta -gappyout > marker_seqs_LSU_alntrimmed.fa
-trimal -in marker_seqs_RPB2_aln.fa -fasta -gappyout > marker_seqs_RPB2_alntrimmed.fa
-trimal -in marker_seqs_SSU_aln.fa -fasta -gappyout > marker_seqs_SSU_alntrimmed.fa
-trimal -in marker_seqs_Tef1_aln.fa -fasta -gappyout > marker_seqs_Tef1_alntrimmed.fa
-trimal -in marker_seqs_Tub2_aln.fa -fasta -gappyout > marker_seqs_Tub2_alntrimmed.fa
