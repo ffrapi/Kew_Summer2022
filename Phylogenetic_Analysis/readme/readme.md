@@ -25,7 +25,7 @@
                   **Using this script, a fasta file for each gene region will be created and ready for alignment**
 ````
 
-####b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. **  
+##### b) Use GenePull (https://github.com/Rowena-h/MiscGenomicsTools/tree/main/GenePull) to get the same markers out of our own genome and add to the other sequences; genome assemblies are here: ​zip icon endophyte_genomes.zip. **  
 ````        
 		i) To download GENEPULL: wget https://raw.githubusercontent.com/Rowena-h/MiscGenomicsTools/main/GenePull/GenePull
 		ii) Make script executable: chmod +x GenePull
@@ -58,7 +58,7 @@
 		Solution: Keep all the hits, run raxml for just that alignment to see where the different copies fall in the gene tree.
 ````
 
-####c) Open both assembly of genes (Step a) and the extracted sequences (Step b) of interest (from GenePull) in AliView**
+##### c) Open both assembly of genes (Step a) and the extracted sequences (Step b) of interest (from GenePull) in AliView**
 
 ````
 	1) Copy and paste the extracted sequence of interest (Step b) into the assembly of genes (Step a)
@@ -71,7 +71,7 @@
 ````
 *To transfer files from local computer to cluster, I prefer to use FileZilla. Instructions on transferring files from and to the cluster are found here: https://rbg-kew-bioinformatics-utils.readthedocs.io/en/latest/kewhpc/ *
 
-####d) Rename files**
+##### d) Rename files**
 
 ````
 The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. strain, RNA etc), the third command adds an underscore ('_') where there are spaces in the file (because Trimmomatic cuts out the second part of the species name if spaces exist)
@@ -80,7 +80,7 @@ The first command gets rid of accession number, the second command gets rid of a
  sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' |  sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
 cat RPB2_aln_rename_FP.fa | sed 's/ /_/g' > RPB2_aln_rename_FP1.fa
 ````
-####e) Alignment using MAFFT
+##### e) Alignment using MAFFT
 
 ````
 	1) Run the script align.sh in the clusters
@@ -89,7 +89,7 @@ cat RPB2_aln_rename_FP.fa | sed 's/ /_/g' > RPB2_aln_rename_FP1.fa
 	2) After alignment is complete, transfer files to local computer and visualize in Aliview to ensure that alignments look sensible before continuing on with the next steps
 ````
 
-####f) Trim and concatenate alignments (Trim.sh), (Concat.sh)
+##### f) Trim and concatenate alignments (Trim.sh), (Concat.sh)
 
 ````
 You can either do the trim and concat separately (Trim.sh) and (Concat.sh) or together (Trimconcat.sh)
@@ -99,14 +99,14 @@ You can either do the trim and concat separately (Trim.sh) and (Concat.sh) or to
 	3) Run scripts
 ````
       
-####g) Run RaxML for genes separately:
+##### g) Run RaxML for genes separately:
 
 ````
 Modify raxml.sh file accordingly and submit
 ````
            
-####h) Check the convergenceTest.log file to see if the trees have converged within 1000 bootstraps
-####i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups
+##### h) Check the convergenceTest.log file to see if the trees have converged within 1000 bootstraps
+##### i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups
 
 
  ## 2) Concatenated gene tree
