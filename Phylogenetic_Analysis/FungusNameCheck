@@ -1,0 +1,15 @@
+1) Download the R script
+
+git clone https://github.com/Rowena-h/FungusNameCheck.git
+
+*requires taxize R package to run - how to load R packages in command line?
+
+2) Create file containing a lsit of names without a header 
+
+
+
+3) Run script: 
+
+FungusNameCheck.R Neoc.list
+
+results: csv file with two columns: first is the provided name in the example.list and the second is the current name /udpated version
