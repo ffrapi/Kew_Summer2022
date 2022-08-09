@@ -6,10 +6,13 @@ git clone https://github.com/Rowena-h/FungusNameCheck.git
 
 2) Create file containing a lsit of names without a header 
 
+sed 's/_[^_]*//2g' 08a_Neocucurbitaria_concat_utg.phy > 08a_Neoc.list
+sed -i 's/_/ /' 08a_Neoc.list
 
 
 3) Run script: 
+Rscript FungusNameCheck.R 08a_Neoc.list
 
-FungusNameCheck.R Neoc.list
+
 
 results: csv file with two columns: first is the provided name in the example.list and the second is the current name /udpated version
