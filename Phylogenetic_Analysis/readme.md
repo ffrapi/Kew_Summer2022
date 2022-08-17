@@ -66,7 +66,9 @@
 	2) Do a fast realignment in AliView to ensure that the alignment looks sensible. Two outcomes could occur during this step: 
 		i. The extracted sequence of interest might not align properly
 			Solution: Reverse complement the extracted sequence of interest and realign again.
+			If this does not work, then remove the sequence that is not aligning properly with the rest of the assembly
 		ii. The extracted sequence of interest aligns properly
+		
 	3) When the realignment looks sensible, save as .fa and transfer from local computer to cluster
 	4) Continue with next steps
 ````
@@ -76,6 +78,9 @@
 
 ````
 The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. strain, RNA etc), the third command adds an underscore ('_') where there are spaces in the file (because Trimmomatic cuts out the second part of the species name if spaces exist)
+
+***NOTE: If you have multiple sequences for one species, this step will rename everything exactly the same. If you want to include all sequences for one species, they must either be renumbered or kept as they were extracted from GenBank and modified later on.
+***NOTE: If you are renumbering sequences of the same species, you must make sure that each sequence corresponds to the same culture from GenBank for each of the markers used - otherwise they will be wrongly merged together in the concatenated phylogenetic analysis.
 
  sed 's/[^> ]* //' marker_seqs_RPB2_aln_edit.fa>  RPB2_aln_rename.fa
  sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' |  sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
@@ -98,6 +103,8 @@ You can either do the trim and concat separately (Trim.sh) and (Concat.sh) or to
 	1) Modify scripts accordingly, especially pathway -i, -o and file names
 	2) Copy and paste AMAS.py into the cluster folder where trimming and concatenating of sequences will take place
 	3) Run scripts
+	
+***NOTE: Can have a look at the .phy file before running RaxML to make sure everything looks sensible
 ````
       
 ##### g) Run RaxML for genes separately:
@@ -107,7 +114,26 @@ Modify raxml.sh file accordingly and submit
 ````
            
 ##### h) Check the convergenceTest.log file to see if the trees have converged within 1000 bootstraps
-##### i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups
+##### i) Copy .support files from raxml to local computer and visualize in FigTree using sensible outgroups to get a brief idea of the tree
+
+
+##### j) Fungus Name Check and creating metadata
+````
+https://github.com/Rowena-h/FungusNameCheck
+
+1) You need to download taxize on the cluster: 
+	module load R
+	R
+	install.packages("taxize",lib="/data/users_area/fpi10kg/R_local_lib")
+	library("taxize", lib.loc="/data/users_area/fpi10kg/R_local_lib")
+	q() 
+2) Create input file
+3) Run FungusNameCheck.R
+4) Create metadata.csv that includes all the species name - to later modify in RStutio in gg.tree()
+
+````
+
+##### k) Visualize trees in gg.tree(): See ggtree.visual.R
 
 
  ## 2) Concatenated gene tree
