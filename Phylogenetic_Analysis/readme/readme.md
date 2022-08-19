@@ -75,11 +75,13 @@
 ##### d) Rename files**
 
 ````
-The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. strain, RNA etc), the third command adds an underscore ('_') where there are spaces in the file (because Trimmomatic cuts out the second part of the species name if spaces exist)
+The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. genomic, RNA etc) and replaces spaces with underscores (because Trimmomatic cuts out the second part of the species name if spaces exist).
 
- sed 's/[^> ]* //' marker_seqs_RPB2_aln_edit.fa>  RPB2_aln_rename.fa
- sed 's/18S.*//' RPB2_aln_rename.fa | sed 's/small.*//' | sed 's/internal.*//' | sed 's/genomic.*//' | sed 's/genes.*//' | sed 's/strain.*//' | sed 's/gene.*//' |  sed 's/:.*//' | sed 's/(.*//' | sed 's/).*//' | sed 's/largest.*//' | sed 's/RNA.*//' | sed 's/;.*//'  | sed 's/,.*//'  | sed 's/’.*//' | sed 's/partial.*//' | sed 's/culture.*//'   | sed 's/RBP2.*//'  > RPB2_aln_rename_FP.fa
-cat RPB2_aln_rename_FP.fa | sed 's/ /_/g' > RPB2_aln_rename_FP1.fa
+ sed 's/[^> ]* //' Neodi_marker_seqs_ITS_F.fa >  1_Neodi_marker_seqs_ITS_F.fa
+ sed 's/;.*//' 1_Neodi_marker_seqs_ITS_F.fa |  sed 's/18S.*//' |sed  's/:/./' |  sed  's/-/./' | sed 's/internal.*//'| sed 's/genomic.*//'  |  sed 's/small.*//'  |  sed 's/5.8S.*//'  | sed 's/ /_/g' > 00_Neodi_marker_seqs_ITS_F.fa
+ 
+rm 1_Neodi_marker_seqs_ITS_F.fa
+
 ````
 ##### e) Alignment using MAFFT
 
