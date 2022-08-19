@@ -77,10 +77,12 @@
 ````
 The first command gets rid of accession number, the second command gets rid of any extra words in the sequence name (e.g. genomic, RNA etc) and replaces spaces with underscores (because Trimmomatic cuts out the second part of the species name if spaces exist).
 
- sed 's/[^> ]* //' Neodi_marker_seqs_ITS_F.fa >  1_Neodi_marker_seqs_ITS_F.fa
- sed 's/;.*//' 1_Neodi_marker_seqs_ITS_F.fa |  sed 's/18S.*//' |sed  's/:/./' |  sed  's/-/./' | sed 's/internal.*//'| sed 's/genomic.*//'  |  sed 's/small.*//'  |  sed 's/5.8S.*//'  | sed 's/ /_/g' > 00_Neodi_marker_seqs_ITS_F.fa
- 
-rm 1_Neodi_marker_seqs_ITS_F.fa
+sed 's/[^> ]* //' Neodi_marker_seqs_TUB2_F.fa >  1_Neodi_marker_seqs_TUB2_F.fa
+sed 's/;.*//' 1_Neodi_marker_seqs_TUB2_F.fa |  sed 's/18S.*//' |  sed 's/beta.*//' |sed 's/RNA.*//' |sed 's/gene.*//' | sed 's/DNA.*//' | sed 's/28S.*//' | sed 's/large.*//' |sed  's/:/./' |  sed  's/-/./' | sed 's/internal.*//'| sed 's/genomic.*//'  |  sed 's/small.*//'  |  sed 's/5.8S.*//'  | sed 's/ /_/g' > 00_Neodi_marker_seqs_TUB2_F.fa
+rm 1_Neodi_marker_seqs_TUB2_F.fa
+
+If you want to remove anything else, this is the syntax: 
+sed -i 's/search_string/replace_string/' filename > filename.tosave
 
 ````
 ##### e) Alignment using MAFFT
