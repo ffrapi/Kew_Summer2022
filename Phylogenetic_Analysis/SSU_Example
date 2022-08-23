@@ -13,3 +13,28 @@
 module load trimal
 
 trimal -in SSU_aln_rename_FP.fa -fasta -gappyout > marker_seqs_SSU_alntrimmed_FP.fa
+
+
+
+./GenePull -a assembly.fa -g LSU_DA.fa -o Did.LSU_result_354377
+./GenePull -a assembly.fa -g ITS_DA.fa -o Did.ITS_result_354377
+./GenePull -a assembly.fa -g RPB2_DS.fa -o Did.RPB2_result_354377
+./GenePull -a assembly.fa -g TUB2_DS.fa -o Did.TUB2_result_354377
+
+./GenePull -a 355091_spades_polished_filtered.fa -g LSU_DM.fa -o Did.LSU_result_355091
+./GenePull -a 355091_spades_polished_filtered.fa -g ITS_D.fa -o Did.ITS_result_355091
+./GenePull -a 355091_spades_polished_filtered.fa -g RPB2_DS.fa -o Did.RPB2_result_355091
+./GenePull -a 355091_spades_polished_filtered.fa -g TUB2_DB.fa -o Did.TUB2_result_355091
+
+
+./GenePull -a 360193_spades_polished_filtered.fa -g LSU_DM.fa -o Did.LSU_result_360193
+./GenePull -a 360193_spades_polished_filtered.fa -g ITS_D.fa -o Did.ITS_result_360193
+./GenePull -a 360193_spades_polished_filtered.fa -g RPB2_DS.fa -o Did.RPB2_result_360193
+./GenePull -a 360193_spades_polished_filtered.fa -g TUB2_DB.fa -o Did.TUB2_result_360193
+
+
+./GenePull -a 355093_raven_polished_filtered.fa -g LSU_DM.fa -o Did.LSU_result_355093
+./GenePull -a 355093_raven_polished_filtered.fa -g ITS_D.fa -o Did.ITS_result_355093
+./GenePull -a 355093_raven_polished_filtered.fa -g RPB2_DS.fa -o Did.RPB2_result_355093
+./GenePull -a 355093_raven_polished_filtered.fa -g TUB2_DB.fa -o Did.TUB2_result_355093
+
