@@ -1,0 +1,9 @@
+ 
+ 
+ unzip -d *zip.gz
+
+
+
+unzip '*.zip'
+cat *_fastqc/summary.txt | column -t -s "|"  > fastqc_Statistics.txt
+awk '($1=="WARN") {print}' fastqc_Statistics.txt > fastqc_failed.txt
