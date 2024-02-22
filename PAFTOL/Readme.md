@@ -8,7 +8,7 @@ ls
 2. Use md5sum -c md5sum.txt command to make sure that the raw sequences have been transferred properly
 3. Run Rscript "GeneratingArrayJob.R"
      a. Create a .txt file including all genome names without the .fastq.gz extension (e.g. "SampleList")
-           ls *gz > SampleListDRAFT.txt > sed 's/.fastq.gz//g' SampleList.txt - text in red 
+           ls *gz > SampleListDRAFT.txt > sed 's/.fastq.gz//g' SampleList.txt @@- text in red @@
      b. Request interactive session to run RScipt ("Rscript GeneratingArrayJob.R").
      c. Run Rscript by changing the necessary arguments in the command (Check script for information on each argument)
    
