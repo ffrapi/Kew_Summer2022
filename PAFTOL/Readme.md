@@ -1,7 +1,7 @@
 
 ![paftol](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/6684715d-8963-4912-8681-a9d2c2b1f8a5)
 
-# Steps from after obtaining raw sequences from company: 
+# Steps after obtaining raw sequences from company
 
 ## Summary of steps (DRAFT 1)
 1. Transfer files to cluster
@@ -26,7 +26,6 @@
 
 4. 
    
-![methodstree-family_2022-03-08 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/56a1d605-6087-477b-b3ab-b990288fe855)
-   
+
 
 
