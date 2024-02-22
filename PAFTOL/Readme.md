@@ -1,5 +1,4 @@
 
-![methodstree-family_2022-03-08 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/56a1d605-6087-477b-b3ab-b990288fe855)
 
 # Steps from after obtaining raw sequences from company: 
 
@@ -26,7 +25,7 @@
 
 4. 
    
-
+![methodstree-family_2022-03-08 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/56a1d605-6087-477b-b3ab-b990288fe855)
    
-![methodstree-family_2022-03-08 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/ace11112-05a2-46a0-9e07-6a4ab225bc27)
+
 
