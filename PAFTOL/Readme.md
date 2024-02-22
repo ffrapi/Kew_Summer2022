@@ -10,8 +10,9 @@ ls
      a. Create a .txt file including all genome names without the .fastq.gz extension (e.g. "SampleList")
            ls *gz > SampleListDRAFT.txt > sed 's/.fastq.gz//g' SampleList.txt
   ```diff
-- _FIX sed COMMAND_
-```
+- FIX sed COMMAND
+  ```
+
      b. Request interactive session to run RScipt ("Rscript GeneratingArrayJob.R").
      c. Run Rscript by changing the necessary arguments in the command (Check script for information on each argument)
    
