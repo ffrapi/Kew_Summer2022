@@ -26,13 +26,13 @@ ls
           
    Now, when you use rstudio the above command should work
 
-     ** The RScript that was just run should have generated 2 files (names are dependent on the command you used): 
-          1) Assembly_T1_SummerBatch_FP_THIS.sh
-          2) RscriptFP.config
+     ** The RScript that was just run should have generated 2 files (names are dependent on the command you used): <br />
+          1) Assembly_T1_SummerBatch_FP_THIS.sh <br />
+          2) RscriptFP.config <br />
 
-4. Run job using sbatch
-     a. Make sure that the array job file and .config file look good (examples found in Github Project main page)
-     b. Run the script:
+4. Run job using sbatch <br />
+     a. Make sure that the array job file and .config file look good (examples found in Github Project main page) <br />
+     b. Run the script: <br />
 
           sbatch Assembly_T1_SummerBatch_FP_THIS.sh
    
