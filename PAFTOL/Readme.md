@@ -20,21 +20,21 @@ ls
    ***POSSIBLE ERROR MESSAGE: $RStudio: command not found
             Will need to install or download R - refer to cluster instructions for this (https://help.cropdiversity.ac.uk/bioconda.html#listing-packages)
              If you are in an interactive node, exit and install the appropriate programs:
-             
-   **install-bioconda
-             conda install -c r rstudio**
+
+        install-bioconda
+        conda install -c r rstudio**
           
    Now, when you use rstudio the above command should work
 
-** The RScript that was just run should have generated 2 files (names are dependent on the command you used): 
-     1) RscriptFP_array_job.sh
-     2) RscriptFP.config
+     ** The RScript that was just run should have generated 2 files (names are dependent on the command you used): 
+          1) Assembly_T1_SummerBatch_FP_THIS.sh
+          2) RscriptFP.config
 
 4. Run job using sbatch
      a. Make sure that the array job file and .config file look good (examples found in Github Project main page)
      b. Run the script:
 
-          sbatch RscriptFP_array_job.sh
+          sbatch Assembly_T1_SummerBatch_FP_THIS.sh
    
 
 
