@@ -37,5 +37,9 @@ ls
           sbatch Assembly_T1_SummerBatch_FP_THIS.sh
    
 
+USEFUL COMMANDS: 
+1. Checking which node the job was run on:
 
+          sacct --format=user,jobid%10,nodelist%50 -X -j <job id>
+          e.g sacct --format=user,jobid%10,nodelist%50 -X -j 16585284_6
 
