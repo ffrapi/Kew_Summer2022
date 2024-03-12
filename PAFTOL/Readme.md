@@ -40,9 +40,11 @@ ls
 
 5. Once the genome assemblies have run, an unzipped folder will be generated for each sample (In case the folder hasn't succesfully unzipped, run this script Assembly_Unzip.sh using sbatch and edit accordingly). This folder will contain multiple reports and files to check the quality of each genome assembly generated. For example, the BUSCO scores of each genome assembly will be represented as such: <br />
 ![busco_plot_fungi_odb10-1 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/436e9f79-1151-449c-b4b7-ed6bf129f5a1)
-![busco_plot_fungi_odb10-1](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/6a18477f-0d86-4368-8797-3b8ee251f31d)
 
-6. 
+<img src='busco_plot_fungi_odb10-1 (1).png' width='25'>
+
+
+7. 
    
 
 USEFUL COMMANDS: 
