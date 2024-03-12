@@ -35,6 +35,13 @@ ls
      b. Run the script: <br />
 
           sbatch Assembly_T1_SummerBatch_FP_THIS.sh
+
+     * you can check the progress of your genome assemblies in the .log and .elog files that is generated for each genome <br />
+
+5. Once the genome assemblies have run, an unzipped folder will be generated for each sample (In case the folder hasn't succesfully unzipped, run this script Assembly_Unzip.sh using sbatch and edit accordingly). This folder will contain multiple reports and files to check the quality of each genome assembly generated. For example, the BUSCO scores of each genome assembly will be represented as such: <br />
+![busco_plot_fungi_odb10-1 (1)](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/436e9f79-1151-449c-b4b7-ed6bf129f5a1)
+
+6. 
    
 
 USEFUL COMMANDS: 
@@ -42,4 +49,5 @@ USEFUL COMMANDS:
 
           sacct --format=user,jobid%10,nodelist%50 -X -j <job id>
           e.g sacct --format=user,jobid%10,nodelist%50 -X -j 16585284_6
+   
 
