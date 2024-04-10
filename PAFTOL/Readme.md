@@ -6,10 +6,12 @@ ls
 ## Summary of steps (DRAFT 1)
 1. Transfer files to cluster
 2. Use md5sum -c md5sum.txt command to make sure that the raw sequences have been transferred properly
-3. Run Rscript "GeneratingArrayJob.R" <br />
+3. Create environment files for each of your sequences by running Rscript "GeneratingArrayJob.R" <br />
      a. Create a .txt file including all genome names (once) without the .fastq.gz extension (e.g. "SampleList") 
            ls *gz > SampleListDRAFT.txt > sed 's/.fastq.gz//g' SampleList.txt  _**FIX SED COMMAND**_ <br />
-     b. Request interactive session to run RScipt ("Rscript GeneratingArrayJob.R").<br />
+     b. Request interactive session to run RScipt  ("Rscript GeneratingArrayJob.R").<br />
+
+        srun --pty bash     
      c. Run Rscript by changing the necessary arguments in the command (Check script for information on each argument). $TMDIR is specified in the scirpt <br />
    
           Rscript GeneratingArrayJob3.R /home/fpitsill/projects/rbgk/projects/fungalTreeOfLife/RawGenomeAssembly/Input /home/fpitsill/projects/rbgk/projects/fungalTreeOfLife/RawGenomeAssembly/Output SampleList3             
