@@ -24,7 +24,7 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
 #After installing, initialize your newly-installed Miniconda. The following commands initialize for bash and zsh shells:
-# It is important to follow all of the directions provided in the Miniconda instructions, particularly ensuring that you run conda init at the end of the installation process, to ensure that your Miniconda installation is fully installed and available for the following commands.
+#It is important to follow all of the directions provided in the Miniconda instructions, particularly ensuring that you run conda init at the end of the installation process, to ensure that your Miniconda installation is fully installed and available #for the following commands.
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
 
