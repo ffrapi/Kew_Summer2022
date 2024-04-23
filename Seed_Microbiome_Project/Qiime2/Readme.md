@@ -85,7 +85,7 @@ If you want to deacivate: <br>
 ## Importing data can be done wqith the "qiime tools import" method. 
 Our data is in the Casava 1.8 paired-end demultiplexed fastq format - so refer to this section of the link below to import your data
 Link : https://docs.qiime2.org/2024.2/tutorials/importing/#id34 <br>
-### Usage: qiime tools import [OPTIONS]
+####Usage: qiime tools import [OPTIONS] (Linux print out message)
 
   Import data to create a new QIIME 2 Artifact. See https://docs.qiime2.org/ <br>
   for usage examples and details on the file types and associated semantic<br>
@@ -100,22 +100,19 @@ Options:<br>
                                                                     [required]<br>
   --output-path ARTIFACT  Path where output artifact should be written.<br>
                                                                     [required]<br>
-  --input-format TEXT     The format of the data to be imported. If not
-                          provided, data must be in the format expected by the
-                          semantic type provided via --type. Use `qiime tools
-                          list-formats --importable` to see which formats of
-                          input data are importable.
-  --validate-level [min|max]
-                          How much to validate the imported data before
-                          creating the artifact. A value of "max" will
-                          generally read the entire file or directory, whereas
-                          "min" will not usually do so.       [default: "max"]
-  --help                  Show this message and exit.
+  --input-format TEXT     The format of the data to be imported. If not<br>
+                          provided, data must be in the format expected by the<br>
+                          semantic type provided via --type. Use `qiime tools<br>
+                          list-formats --importable` to see which formats of<br>
+                          input data are importable.<br>
+  --validate-level [min|max]<br>
+                          How much to validate the imported data before<br>
+                          creating the artifact. A value of "max" will<br>
+                          generally read the entire file or directory, whereas<br>
+                          "min" will not usually do so.       [default: "max"]<br>
+  --help                  Show this message and exit.<br>
 
-                  There were some problems with the command:
- (1/3) Missing option '--type'.
- (2/3) Missing option '--input-path'.
- (3/3) Missing option '--output-path'. <br> 
+Command used for my data: 
 
-     qiime tools import   --type 'SampleData[PairedEndSequencesWithQuality]'   --input-path /home/frapi/miniconda3/envs/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt   --output-path SMP_demux-paired-end.qza
+    qiime tools import   --type 'SampleData[PairedEndSequencesWithQuality]'   --input-path /home/frapi/miniconda3/envs/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt   --output-path SMP_demux-paired-end.qza
 
