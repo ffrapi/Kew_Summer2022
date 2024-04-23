@@ -80,8 +80,10 @@ If you want to deacivate: <br>
         conda activate qiime2-amplicon-2024.2
         conda info
 
+
 ## Useful qiime links/commands: 
 For visualizing qza, qzv files: https://view.qiime2.org/
+![download](https://github.com/ffrapi/RGB_KEW_PROJECTS_22-24/assets/70023430/5a53f901-f39e-4652-9501-beb691ae5bcf)
 
 # Importing our data
 ## Importing data can be done wqith the "qiime tools import" method. 
