@@ -79,3 +79,43 @@ If you want to deacivate: <br>
 ### Updating: In order to to update/upgrade to the newest release, you simply install the newest version in a new conda environment by following the instructions above. Then you will have two conda environments, one with the older version of QIIME 2 and one with the newer version.  <br>
         conda activate qiime2-amplicon-2024.2
         conda info
+
+
+# Importing our data
+## Importing data can be done wqith the "qiime tools import" method. 
+Our data is in the Casava 1.8 paired-end demultiplexed fastq format - so refer to this section of the link below to import your data
+Link : https://docs.qiime2.org/2024.2/tutorials/importing/#id34 <br>
+### Usage: qiime tools import [OPTIONS]
+
+  Import data to create a new QIIME 2 Artifact. See https://docs.qiime2.org/
+  for usage examples and details on the file types and associated semantic
+  types that can be imported.
+
+Options:
+  --type TEXT             The semantic type of the artifact that will be
+                          created upon importing. Use `qiime tools list-types`
+                          to see what importable semantic types are available
+                          in the current deployment.                [required]
+  --input-path PATH       Path to file or directory that should be imported.
+                                                                    [required]
+  --output-path ARTIFACT  Path where output artifact should be written.
+                                                                    [required]
+  --input-format TEXT     The format of the data to be imported. If not
+                          provided, data must be in the format expected by the
+                          semantic type provided via --type. Use `qiime tools
+                          list-formats --importable` to see which formats of
+                          input data are importable.
+  --validate-level [min|max]
+                          How much to validate the imported data before
+                          creating the artifact. A value of "max" will
+                          generally read the entire file or directory, whereas
+                          "min" will not usually do so.       [default: "max"]
+  --help                  Show this message and exit.
+
+                  There were some problems with the command:
+ (1/3) Missing option '--type'.
+ (2/3) Missing option '--input-path'.
+ (3/3) Missing option '--output-path'. <br> 
+
+     qiime tools import   --type 'SampleData[PairedEndSequencesWithQuality]'   --input-path /home/frapi/miniconda3/envs/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt   --output-path SMP_demux-paired-end.qza
+
