@@ -74,7 +74,7 @@ If you want to deacivate: <br>
     qiime --help
 
 
-## EXTRA: UPDATING AND RE-ACTIVATING QIIME2 <br>
+### EXTRA: UPDATING AND RE-ACTIVATING QIIME2 <br>
 
 ### Updating: In order to to update/upgrade to the newest release, you simply install the newest version in a new conda environment by following the instructions above. Then you will have two conda environments, one with the older version of QIIME 2 and one with the newer version.  <br>
         conda activate qiime2-amplicon-2024.2
@@ -87,19 +87,19 @@ Our data is in the Casava 1.8 paired-end demultiplexed fastq format - so refer t
 Link : https://docs.qiime2.org/2024.2/tutorials/importing/#id34 <br>
 ### Usage: qiime tools import [OPTIONS]
 
-  Import data to create a new QIIME 2 Artifact. See https://docs.qiime2.org/
-  for usage examples and details on the file types and associated semantic
-  types that can be imported.
+  Import data to create a new QIIME 2 Artifact. See https://docs.qiime2.org/ <br>
+  for usage examples and details on the file types and associated semantic<br>
+  types that can be imported.<br>
 
-Options:
-  --type TEXT             The semantic type of the artifact that will be
-                          created upon importing. Use `qiime tools list-types`
-                          to see what importable semantic types are available
-                          in the current deployment.                [required]
-  --input-path PATH       Path to file or directory that should be imported.
-                                                                    [required]
-  --output-path ARTIFACT  Path where output artifact should be written.
-                                                                    [required]
+Options:<br>
+  --type TEXT             The semantic type of the artifact that will be<br>
+                          created upon importing. Use `qiime tools list-types`<br>
+                          to see what importable semantic types are available<br>
+                          in the current deployment.                [required]<br>
+  --input-path PATH       Path to file or directory that should be imported.<br>
+                                                                    [required]<br>
+  --output-path ARTIFACT  Path where output artifact should be written.<br>
+                                                                    [required]<br>
   --input-format TEXT     The format of the data to be imported. If not
                           provided, data must be in the format expected by the
                           semantic type provided via --type. Use `qiime tools
