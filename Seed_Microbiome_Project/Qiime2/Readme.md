@@ -50,10 +50,11 @@ rm qiime2-amplicon-2024.2-py38-linux-conda.yml
 
 #activate the conda environment 
 
-$conda activate qiime2-<distro>-2024.2
+conda activate qiime2-amplicon-2024.2
+conda activate qiime2-shotgun-2024.2
 
-
-
+If you want to deacivate: 
+conda deactivate
 
 
 #TEST INSTALLATION
