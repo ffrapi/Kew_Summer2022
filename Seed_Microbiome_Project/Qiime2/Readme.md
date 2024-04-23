@@ -116,3 +116,4 @@ Command used for my data:
 
     qiime tools import   --type 'SampleData[PairedEndSequencesWithQuality]'   --input-path /home/frapi/miniconda3/envs/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt   --output-path SMP_demux-paired-end.qza
 
+**After using this command, a single file ending in .qza should be created. This is the qiime artifact that will be used for future analyses.**
