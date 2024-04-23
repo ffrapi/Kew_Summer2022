@@ -116,4 +116,21 @@ Command used for my data:
 
     qiime tools import   --type 'SampleData[PairedEndSequencesWithQuality]'   --input-path /home/frapi/miniconda3/envs/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt   --output-path SMP_demux-paired-end.qza
 
-**After using this command, a single file ending in .qza should be created. This is the qiime artifact that will be used for future analyses.**
+**After using this command, a single file ending in .qza should be created. This is the qiime artifact that will be used for future analyses.** <br>
+
+# Demultiplexin sequences 
+Our samples have already been demultiplexed so we can skip this step and continue with the enxt one: denoising
+
+# Removing adapters: ** need to revise this**
+https://docs.qiime2.org/2018.2/plugins/available/cutadapt/trim-paired/ <br>
+
+qiime cutadapt trim-paired \
+  --i-demultiplexed-sequences SMP_demux-paired-end.qza \
+  --p-front-f TAGAGGAAGTAAAAGTCGTAA \
+  --p-error-rate 0 \
+  --p-front-r CWGYGTTCTTCATCGATG \
+  --o-trimmed-sequences SMP_demux-paired-end_trimmed.qza \
+  --verbose
+
+
+
