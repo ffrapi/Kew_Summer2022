@@ -74,6 +74,8 @@ If you want to deacivate: <br>
     qiime --help
 
 
-#TEST INSTALLATION
-qiime --help
+## EXTRA: UPDATING AND RE-ACTIVATING QIIME2 <br>
 
+### Updating: In order to to update/upgrade to the newest release, you simply install the newest version in a new conda environment by following the instructions above. Then you will have two conda environments, one with the older version of QIIME 2 and one with the newer version.  <br>
+        conda activate qiime2-amplicon-2024.2
+        conda info
