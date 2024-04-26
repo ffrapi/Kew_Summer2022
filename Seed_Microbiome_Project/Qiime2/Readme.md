@@ -246,3 +246,60 @@ Link: https://docs.qiime2.org/2024.2/tutorials/chimera/ <br>
       --i-table SMP_uchime-dn-out/table-nonchimeric-wo-borderline.qza \
       --o-visualization SMP_uchime-dn-out/table-nonchimeric-wo-borderline.qzv
 
+
+# Taxonomic assignment
+
+## Training feature classifier
+
+    mkdir training-feature-classifiers
+    cd training-feature-classifiers
+
+### 1: Obtain and import reference data sets
+
+Two things are required for training the classifier: 1) the reference sequences and the corresponding taxonomic classifications <br>
+Link: https://doi.plutof.ut.ee/doi/10.15156/BIO/2959336 , https://unite.ut.ee/repository.php<br>
+Download the latest qiime2 release (.tgz) file<br>
+Add this to Ubuntu and unzip twice - all files should appear (6 files, 1 pdf, 2 fasta, 2 txt etc)<br>
+
+    qiime tools import \
+      --type 'FeatureData[Sequence]' \
+      --input-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_refs_qiime_ver10_97_04.04.2024.fasta \
+      --output-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_refs_qiime_ver10_97_04.04.2024.qza
+    
+    qiime tools import \
+      --type 'FeatureData[Taxonomy]' \
+      --input-format HeaderlessTSVTaxonomyFormat \
+      --input-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_taxonomy_qiime_ver10_97_04.04.2024.txt \
+      --output-path UNITE_ref-taxonomy.qza
+
+### 2: Extract reference reads<br>
+This command will need specific modifications based on our system - check what Sam from FERA used for this part <br>
+
+    qiime feature-classifier extract-reads \
+      --i-sequences sh_refs_qiime_ver10_97_04.04.2024.qza \
+      --p-f-primer TAGAGGAAGTAAAAGTCGTAA \
+      --p-r-primer CWGYGTTCTTCATCGATG \
+      --p-trunc-len 120 \
+      --p-min-length 100 \
+      --p-max-length 400 \
+      --o-reads UNITE_ref-seqs.qza
+
+### 3: Train the classifier: 
+Train our Naive Bayes classifier, using the reference reads and taxonomy that we just created
+
+    qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads UNITE1_ref-seqs.qza \
+      --i-reference-taxonomy UNITE_ref-taxonomy.qza \
+      --o-classifier UNITE1_classifier.qza
+
+### 4: Test the classifier
+Verify that the classifier works by classifying the representative sequences in our sample and viwualizing the resulting taxonomic assignments 
+
+    qiime feature-classifier classify-sklearn \
+      --i-classifier UNITE1_classifier.qza \
+      --i-reads SMP_rep-seqs-dn-99.qza \
+      --o-classification SMP_taxonomy.qza
+
+qiime metadata tabulate \
+  --m-input-file SMP_taxonomy.qza \
+  --o-visualization SMP_taxonomy.qzv
