@@ -299,7 +299,7 @@ Verify that the classifier works by classifying the representative sequences in 
       --i-classifier UNITE1_classifier.qza \
       --i-reads SMP_rep-seqs-dn-99.qza \
       --o-classification SMP_taxonomy.qza
-
-qiime metadata tabulate \
-  --m-input-file SMP_taxonomy.qza \
-  --o-visualization SMP_taxonomy.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file SMP_taxonomy.qza \
+      --o-visualization SMP_taxonomy.qzv
