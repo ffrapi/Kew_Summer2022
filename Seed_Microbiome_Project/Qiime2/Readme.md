@@ -5,9 +5,9 @@ Overview: https://docs.qiime2.org/2024.2/install/ , https://docs.qiime2.org/2024
 
 ## Step 1: Installing WSL on local computer: https://learn.microsoft.com/en-us/windows/wsl/install <br>
 
-    wsl --install <br>
-    wsl --list --online #to see list of Linux distributions  <br>
-    wsl --install -d Ubuntu #install Linux distribution Ubuntu <br>
+    wsl --install 
+    wsl --list --online #to see list of Linux distributions 
+    wsl --install -d Ubuntu #install Linux distribution Ubuntu 
 
 Following the last command, a window should pop up for Ubuntu <br>
 
