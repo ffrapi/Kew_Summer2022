@@ -7,9 +7,9 @@ If you need any help during the pipeline use the following command:
 
 For visualizing qza, qzv files: https://view.qiime2.org/
 
-##Before you start: Activate qiime2 plugin in your terminal
+## Before you start: Activate qiime2 plugin in your terminal
 
     conda activate qiime2-amplicon-2024.2
     conda activate qiime2-shotgun-2024.2
 
-##1: Importing your data
+## 1: Importing your data
