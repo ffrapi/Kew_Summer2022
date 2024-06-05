@@ -44,6 +44,7 @@ This command will produce the .qzv file that you can view using either this webs
 
 DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data. <br>
 
+#### Trial 1: 
     qiime dada2 denoise-paired \
       --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
       --p-trim-left-f 25 \
@@ -54,4 +55,117 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
       --o-table SMP_DADA2_table_Trim25_Trunc300_FP.qza \
       --o-denoising-stats SMP_DADA2_stats_Trim25_Trunc300_FP.qza
 
-Need to find strategy to determine what the best cut-off point is for these ones - focus on this tomorrow. Check notebook
+#### Trial 2: 
+     qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 2 \
+          --p-trim-left-r 2 \
+          --p-trunc-len-f 300 \
+          --p-trunc-len-r 300 \
+          --o-representative-sequences SMP_DADA2_Trim2_Trunc250_FP.qza \
+          --o-table SMP_DADA2_table_Trim2_Trunc300_FP.qza \
+          --o-denoising-stats SMP_DADA2_stats_Trim2_Trunc300_FP.qza
+
+         qiime feature-table summarize \
+      --i-table SMP_DADA2_table_Trim2_Trunc300_FP.qza \
+      --o-visualization 2_SMP_DADA2_table_Trim2_Trunc300_FP.qzv 
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data SMP_DADA2_Trim2_Trunc250_FP.qza \
+      --o-visualization 2_SMP_DADA2_Trim2_Trunc250_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file SMP_DADA2_stats_Trim2_Trunc300_FP.qza \
+      --o-visualization 2_SMP_DADA2_stats_Trim2_Trunc300_FP.qzv
+
+
+### Trial 3: 
+
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 6 \
+          --p-trim-left-r 6 \
+          --p-trunc-len-f 300 \
+          --p-trunc-len-r 300 \
+          --o-representative-sequences 3_SMP_DADA2_Trim6_Trunc250_FP.qza \
+          --o-table 3_SMP_DADA2_table_Trim6_Trunc300_FP.qza \
+          --o-denoising-stats 3_SMP_DADA2_stats_Trim6_Trunc300_FP.qza
+
+         qiime feature-table summarize \
+      --i-table  3_SMP_DADA2_table_Trim6_Trunc300_FP.qza \
+      --o-visualization 3_SMP_DADA2_table_Trim6_Trunc300_FP.qzv 
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data 3_SMP_DADA2_Trim6_Trunc250_FP.qza \
+      --o-visualization 3_SMP_DADA2_Trim6_Trunc250_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file  3_SMP_DADA2_stats_Trim6_Trunc300_FP.qza \
+      --o-visualization  3_SMP_DADA2_stats_Trim6_Trunc300_FP.qzv
+
+### Trial 4: 
+
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 50 \
+          --p-trim-left-r 50 \
+          --p-trunc-len-f 300 \
+          --p-trunc-len-r 300 \
+          --o-representative-sequences 4_SMP_DADA2_Trim50_Trunc300_FP.qza \
+          --o-table 4_SMP_DADA2_table_Trim50_Trunc300_FP.qza \
+          --o-denoising-stats 4_SMP_DADA2_stats_Trim50_Trunc300_FP.qza
+
+         qiime feature-table summarize \
+      --i-table  4_SMP_DADA2_table_Trim50_Trunc300_FP.qza \
+      --o-visualization 4_SMP_DADA2_table_Trim50_Trunc300_FP.qzv
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data 4_SMP_DADA2_Trim50_Trunc300_FP.qza \
+      --o-visualization 4_SMP_DADA2_Trim50_Trunc300_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file  4_SMP_DADA2_stats_Trim50_Trunc300_FP.qza \
+      --o-visualization   4_SMP_DADA2_stats_Trim50_Trunc300_FP.qzv
+
+
+### Trial 5: Reducing truncation length 
+
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 6 \
+          --p-trim-left-r 6 \
+          --p-trunc-len-f 250 \
+          --p-trunc-len-r 250 \
+          --o-representative-sequences 5_SMP_DADA2_Trim6_Trunc250_FP.qza \
+          --o-table 5_SMP_DADA2_table_Trim6_Trunc250_FP.qza \
+          --o-denoising-stats 5_SMP_DADA2_stats_Trim6_Trunc250_FP.qza
+
+         qiime feature-table summarize \
+      --i-table 5_SMP_DADA2_table_Trim6_Trunc250_FP.qza \
+      --o-visualization 5_SMP_DADA2_table_Trim6_Trunc250_FP.qzv
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data  5_SMP_DADA2_Trim6_Trunc250_FP.qza \
+      --o-visualization 5_SMP_DADA2_Trim6_Trunc250_FP.qza
+    
+    qiime metadata tabulate \
+      --m-input-file  5_SMP_DADA2_stats_Trim6_Trunc250_FP.qza \
+      --o-visualization   5_SMP_DADA2_stats_Trim6_Trunc250_FP.qzv
+Generate summaries for the feature table, the corresponding feature sequences and DADA2 denoising statistics. 
+
+    qiime feature-table summarize \
+      --i-table SMP_DADA2_table_Trim25_Trunc300_FP.qza \
+      --o-visualization SMP_DADA2_table_Trim25_Trunc300_FP.qzv 
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data SMP_DADA2_Trim25_Trunc250_FP.qza \
+      --o-visualization SMP_DADA2_Trim25_Trunc250_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file SMP_DADA2_stats_Trim25_Trunc300_FP.qza \
+      --o-visualization SMP_DADA2_stats_Trim25_Trunc300_FP.qzv
