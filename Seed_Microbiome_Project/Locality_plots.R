@@ -38,6 +38,9 @@ pdf(file="/Users/fpi10kg/Documents/1_SMP_ANALYSIS_2024/Rstudio_ALL/World_map_Alt
 p3
 dev.off()
 
+jpeg(file="/Users/fpi10kg/Documents/1_SMP_ANALYSIS_2024/Rstudio_ALL/World_map_Altitude_SOY_7JUNE24.jpeg")
+p3
+dev.off()
 ###1: Locality separated by type of plant host 
 p1 <- ggplot()+ geom_map( 
   data = world_coordinates, map = world_coordinates, 
