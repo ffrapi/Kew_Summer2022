@@ -133,7 +133,7 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
 
 ### Trial 5: Reducing truncation length 
 
- qiime dada2 denoise-paired \
+     qiime dada2 denoise-paired \
           --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
           --p-trim-left-f 6 \
           --p-trim-left-r 6 \
@@ -150,11 +150,96 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
     
     qiime feature-table tabulate-seqs \
       --i-data  5_SMP_DADA2_Trim6_Trunc250_FP.qza \
-      --o-visualization 5_SMP_DADA2_Trim6_Trunc250_FP.qza
+      --o-visualization 5_SMP_DADA2_Trim6_Trunc250_FP.qzv
     
     qiime metadata tabulate \
       --m-input-file  5_SMP_DADA2_stats_Trim6_Trunc250_FP.qza \
       --o-visualization   5_SMP_DADA2_stats_Trim6_Trunc250_FP.qzv
+
+
+### Trial 6: Reducing truncation length 
+
+     qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 6 \
+          --p-trim-left-r 6 \
+          --p-trunc-len-f 240 \
+          --p-trunc-len-r 240 \
+          --o-representative-sequences 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+          --o-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
+          --o-denoising-stats 6_SMP_DADA2_stats_Trim6_Trunc240_FP.qza
+
+         qiime feature-table summarize \
+      --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
+      --o-visualization 6_SMP_DADA2_table_Trim6_Trunc240_FP.qzv
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data  6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+      --o-visualization 6_SMP_DADA2_Trim6_Trunc240_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file  6_SMP_DADA2_stats_Trim6_Trunc240_FP.qza \
+      --o-visualization   6_SMP_DADA2_stats_Trim6_Trunc240_FP.qzv
+
+
+### Trial 7: Reducing truncation length 
+
+     qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 6 \
+          --p-trim-left-r 6 \
+          --p-trunc-len-f 225 \
+          --p-trunc-len-r 225 \
+          --o-representative-sequences 7_SMP_DADA2_Trim6_Trunc225_FP.qza \
+          --o-table 7_SMP_DADA2_table_Trim6_Trunc225_FP.qza \
+          --o-denoising-stats 7_SMP_DADA2_stats_Trim6_Trunc225_FP.qza
+
+         qiime feature-table summarize \
+      --i-table 7_SMP_DADA2_table_Trim6_Trunc225_FP.qza \
+      --o-visualization 7_SMP_DADA2_table_Trim6_Trunc225_FP.qzv
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data  7_SMP_DADA2_Trim6_Trunc225_FP.qza \
+      --o-visualization 7_SMP_DADA2_Trim6_Trunc225_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file  7_SMP_DADA2_stats_Trim6_Trunc225_FP.qza \
+      --o-visualization   7_SMP_DADA2_stats_Trim6_Trunc225_FP.qzv
+
+
+### Trial 8: Reducing truncation length 
+
+     qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --p-trim-left-f 6 \
+          --p-trim-left-r 6 \
+          --p-trunc-len-f 200 \
+          --p-trunc-len-r 200 \
+          --o-representative-sequences 8_SMP_DADA2_Trim6_Trunc200_FP.qza \
+          --o-table 8_SMP_DADA2_table_Trim6_Trunc200_FP.qza \
+          --o-denoising-stats 8_SMP_DADA2_stats_Trim6_Trunc200_FP.qza
+
+         qiime feature-table summarize \
+      --i-table 8_SMP_DADA2_table_Trim6_Trunc200_FP.qza \
+      --o-visualization 8_SMP_DADA2_table_Trim6_Trunc200_FP.qzv
+     # --m-sample-metadata-file sample-metadata.tsv
+    
+    qiime feature-table tabulate-seqs \
+      --i-data  8_SMP_DADA2_Trim6_Trunc200_FP.qza \
+      --o-visualization 8_SMP_DADA2_Trim6_Trunc200_FP.qzv
+    
+    qiime metadata tabulate \
+      --m-input-file  8_SMP_DADA2_stats_Trim6_Trunc200_FP.qza \
+      --o-visualization   8_SMP_DADA2_stats_Trim6_Trunc200_FP.qzv
+
+
+
+
+
+
+
 Generate summaries for the feature table, the corresponding feature sequences and DADA2 denoising statistics. 
 
     qiime feature-table summarize \
@@ -169,3 +254,64 @@ Generate summaries for the feature table, the corresponding feature sequences an
     qiime metadata tabulate \
       --m-input-file SMP_DADA2_stats_Trim25_Trunc300_FP.qza \
       --o-visualization SMP_DADA2_stats_Trim25_Trunc300_FP.qzv
+
+
+
+# Taxonomic assignment
+
+
+## Training feature classifier
+
+    mkdir training-feature-classifiers
+    cd training-feature-classifiers
+
+### 1: Obtain and import reference data sets
+
+Two things are required for training the classifier: 1) the reference sequences and the corresponding taxonomic classifications <br>
+Link: https://doi.plutof.ut.ee/doi/10.15156/BIO/2959336 , https://unite.ut.ee/repository.php<br>
+Download the latest qiime2 release (.tgz) file<br>
+Add this to Ubuntu and unzip twice - all files should appear (6 files, 1 pdf, 2 fasta, 2 txt etc)<br>
+
+    qiime tools import \
+      --type 'FeatureData[Sequence]' \
+      --input-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_refs_qiime_ver10_97_04.04.2024.fasta \
+      --output-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_refs_qiime_ver10_97_04.04.2024.qza
+    
+    qiime tools import \
+      --type 'FeatureData[Taxonomy]' \
+      --input-format HeaderlessTSVTaxonomyFormat \
+      --input-path /home/frapi/miniconda3/envs/training-feature-classifiers/sh_qiime_release_04.04.2024/sh_taxonomy_qiime_ver10_97_04.04.2024.txt \
+      --output-path UNITE_ref-taxonomy.qza
+
+### 2: Extract reference reads<br>
+This command will need specific modifications based on our system - check what Sam from FERA used for this part <br>
+
+    qiime feature-classifier extract-reads \
+      --i-sequences sh_refs_qiime_ver10_97_04.04.2024.qza \
+      --p-f-primer TAGAGGAAGTAAAAGTCGTAA \
+      --p-r-primer CWGYGTTCTTCATCGATG \
+      --p-trunc-len 120 \
+      --p-min-length 100 \
+      --p-max-length 400 \
+      --o-reads UNITE_ref-seqs.qza
+
+### 3: Train the classifier: 
+Train our Naive Bayes classifier, using the reference reads and taxonomy that we just created
+
+    qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads UNITE1_ref-seqs.qza \
+      --i-reference-taxonomy UNITE_ref-taxonomy.qza \
+      --o-classifier UNITE1_classifier.qza
+
+### 4: Test the classifier
+Verify that the classifier works by classifying the representative sequences in our sample and viwualizing the resulting taxonomic assignments 
+
+    qiime feature-classifier classify-sklearn \
+      --i-classifier UNITE1_classifier.qza \
+      --i-reads SMP_rep-seqs-dn-99.qza \
+      --o-classification SMP_taxonomy.qza
+    
+    qiime metadata tabulate \
+      --m-input-file SMP_taxonomy.qza \
+      --o-visualization SMP_taxonomy.qzv
+
