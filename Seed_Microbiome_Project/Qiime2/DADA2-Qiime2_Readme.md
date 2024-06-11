@@ -318,7 +318,7 @@ Verify that the classifier works by classifying the representative sequences in 
 
 #### Trial 1: Training classifiers
 
-qiime feature-classifier extract-reads \
+    qiime feature-classifier extract-reads \
       --i-sequences sh_refs_qiime_ver10_97_04.04.2024.qza \
       --p-f-primer TAGAGGAAGTAAAAGTCGTAA \
       --p-r-primer CWGYGTTCTTCATCGATG \
@@ -326,3 +326,18 @@ qiime feature-classifier extract-reads \
       --p-min-length 100 \
       --p-max-length 700 \
       --o-reads UNITE_ref-seqs_T1.qza
+      
+    qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads UNITE_ref-seqs_T1.qza \
+      --i-reference-taxonomy UNITE_ref-taxonomy.qza \
+      --o-classifier UNITE_classifier_ML700_TL_0.qza
+
+
+      qiime feature-classifier classify-sklearn \
+      --i-classifier UNITE_classifier_ML700_TL_0.qza \
+      --i-reads 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+      --o-classification SMP_Taxonomy_T1_11JUNE.qza
+    
+    qiime metadata tabulate \
+      --m-input-file SMP_Taxonomy_T1_11JUNE.qza \
+      --o-visualization SMP_Taxonomy_T1_11JUNE.qzv
