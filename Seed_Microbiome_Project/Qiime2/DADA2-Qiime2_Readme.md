@@ -259,7 +259,6 @@ Generate summaries for the feature table, the corresponding feature sequences an
 
 # Taxonomic assignment
 
-
 ## Training feature classifier
 
     mkdir training-feature-classifiers
@@ -292,26 +291,38 @@ This command will need specific modifications based on our system - check what S
       --p-r-primer CWGYGTTCTTCATCGATG \
       --p-trunc-len 120 \
       --p-min-length 100 \
-      --p-max-length 400 \
+      --p-max-length 500 \
       --o-reads UNITE_ref-seqs.qza
 
 ### 3: Train the classifier: 
 Train our Naive Bayes classifier, using the reference reads and taxonomy that we just created
 
     qiime feature-classifier fit-classifier-naive-bayes \
-      --i-reference-reads UNITE1_ref-seqs.qza \
+      --i-reference-reads UNITE_ref-seqs.qza \
       --i-reference-taxonomy UNITE_ref-taxonomy.qza \
-      --o-classifier UNITE1_classifier.qza
+      --o-classifier UNITE_classifier_ML500_TL_120.qza
 
 ### 4: Test the classifier
-Verify that the classifier works by classifying the representative sequences in our sample and viwualizing the resulting taxonomic assignments 
+Verify that the classifier works by classifying the representative sequences in our sample and visualizing the resulting taxonomic assignments 
 
     qiime feature-classifier classify-sklearn \
-      --i-classifier UNITE1_classifier.qza \
-      --i-reads SMP_rep-seqs-dn-99.qza \
-      --o-classification SMP_taxonomy.qza
+      --i-classifier UNITE_classifier_ML500_TL_120.qza \
+      --i-reads 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+      --o-classification SMP_Taxonomy_T1_11JUNE.qza
     
     qiime metadata tabulate \
-      --m-input-file SMP_taxonomy.qza \
-      --o-visualization SMP_taxonomy.qzv
+      --m-input-file SMP_Taxonomy_T1_11JUNE.qza \
+      --o-visualization SMP_Taxonomy_T1_11JUNE.qzv
 
+
+
+#### Trial 1: Training classifiers
+
+qiime feature-classifier extract-reads \
+      --i-sequences sh_refs_qiime_ver10_97_04.04.2024.qza \
+      --p-f-primer TAGAGGAAGTAAAAGTCGTAA \
+      --p-r-primer CWGYGTTCTTCATCGATG \
+      --p-trunc-len 0 \
+      --p-min-length 100 \
+      --p-max-length 700 \
+      --o-reads UNITE_ref-seqs_T1.qza
