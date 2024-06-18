@@ -38,7 +38,23 @@ This command will produce the .qzv file that you can view using either this webs
 
       qiime tools view SMP_demux-paired-end_FP.qzv
 
-## 2. Denoising using DADA2 plugin 
+## 2: Cutadapt - removing non-biological sequences
+
+    qiime cutadapt trim-paired \
+      --i-demultiplexed-sequences SMP_demux-paired-end_FP.qza \
+      --p-cores 4 \
+      --p-front-f TAGAGGAAGTAAAAGTCGTAA \
+      --p-front-r CWGYGTTCTTCATCGATG \
+      --o-trimmed-sequences SMP_demux-paired-end_cutadapt_FP.qza \
+      --verbose
+
+*does not work for now 
+
+        qiime demux summarize \
+              --i-data SMP_demux-paired-end_cutadapt_FP.qza \
+              --o-visualization SMP_demux-paired-end_cutadapt_FP.qzv
+
+## 3. Denoising using DADA2 plugin 
 
 **Source**: https://docs.qiime2.org/2024.5/plugins/available/dada2/denoise-paired/ <br>
 
@@ -46,7 +62,7 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
 
 #### Trial 1: 
     qiime dada2 denoise-paired \
-      --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+      --i-demultiplexed-seqs SMP_demux-paired-end_cutadapt_FP.qza \
       --p-trim-left-f 25 \
       --p-trim-left-r 25 \
       --p-trunc-len-f 300 \
@@ -160,7 +176,7 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
 ### Trial 6: Reducing truncation length 
 
      qiime dada2 denoise-paired \
-          --i-demultiplexed-seqs SMP_demux-paired-end_FP.qza \
+          --i-demultiplexed-seqs SMP_demux-paired-end_cutadapt_FP.qza \
           --p-trim-left-f 6 \
           --p-trim-left-r 6 \
           --p-trunc-len-f 240 \
@@ -257,7 +273,7 @@ Generate summaries for the feature table, the corresponding feature sequences an
 
 
 
-# Taxonomic assignment
+# 4: Taxonomic assignment
 
 ## Training feature classifier
 
@@ -341,3 +357,14 @@ Verify that the classifier works by classifying the representative sequences in 
     qiime metadata tabulate \
       --m-input-file SMP_Taxonomy_T1_11JUNE.qza \
       --o-visualization SMP_Taxonomy_T1_11JUNE.qzv
+
+
+
+ qiime feature-classifier classify-sklearn \
+      --i-classifier /home/frapi/SMP_2024/T3_4JUNE/training-feature-classifiers/sh_qiime_release_04.04.2024/UNITE_classifier_ML700_TL_0.qza \
+      --i-reads 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+      --o-classification 6_SMP_Taxonomy_T1_18JUNE.qza
+    
+    qiime metadata tabulate \
+      --m-input-file 6_SMP_Taxonomy_T1_18JUNE.qza \
+      --o-visualization 6_SMP_Taxonomy_T1_18JUNE.qzv
