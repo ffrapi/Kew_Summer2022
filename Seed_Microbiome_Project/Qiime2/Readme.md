@@ -48,6 +48,7 @@ or alternatively, using the path specified above: <br>
 Once you have Miniconda installed, create a conda environment and install the QIIME 2 2024.2 distribution of your choice within the environment. We highly recommend creating a new environment specifically for the QIIME 2 distribution and release being installed, as there are many required dependencies that you may not want added to an existing environment. You can choose whatever name you’d like for the environment. In this example, we’ll name the environments qiime2-<distro>-2024.2 to indicate what QIIME 2 release is installed (i.e. 2024.2). <br>
 Link: https://docs.qiime2.org/2024.2/install/native/ <br>
 
+#### This code can also be run on the cluster to download qiime2
 ### The code below will download the amplicon "package of qiime2" <br>
     wget https://data.qiime2.org/distro/amplicon/qiime2-amplicon-2024.2-py38-linux-conda.yml
     $conda env create -n qiime2-amplicon-2024.2 --file qiime2-amplicon-2024.2-py38-linux-conda.yml
@@ -303,3 +304,37 @@ Verify that the classifier works by classifying the representative sequences in 
     qiime metadata tabulate \
       --m-input-file SMP_taxonomy.qza \
       --o-visualization SMP_taxonomy.qzv
+
+### Use pre-trained classifier: 
+     qiime feature-classifier classify-sklearn \
+      --i-classifier unite_ver10_dynamic_all_04.04.2024-Q2-2024.2.qza \
+      --i-reads6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+      --o-classification T1_SMP_taxonomy_dynamic_all.qza
+
+          qiime metadata tabulate \
+      --m-input-file T1_SMP_taxonomy_dynamic_all.qza \
+      --o-visualization T1_SMP_taxonomy_dynamic_all.qzv
+
+
+# Analyzing feature tables
+
+## Taxonomic analysis/visualization
+    qiime taxa barplot \
+    --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
+    --i-taxonomy T1_SMP_taxonomy_dynamic_all.qza \
+    --o-visualization T1_taxa-bar-plots.qzv
+
+## building phylogenetic tree
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
+  --o-alignment 6_SMP_DADA2_Trim6_Trunc240_FP_aligned.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+
+## diversity
+  qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
+  --p-sampling-depth 1103 \
+  --output-dir core-metrics-results
