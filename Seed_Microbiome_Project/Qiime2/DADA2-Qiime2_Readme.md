@@ -368,3 +368,8 @@ Verify that the classifier works by classifying the representative sequences in 
     qiime metadata tabulate \
       --m-input-file 6_SMP_Taxonomy_T1_18JUNE.qza \
       --o-visualization 6_SMP_Taxonomy_T1_18JUNE.qzv
+
+          qiime taxa barplot \
+      --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
+      --i-taxonomy 6_SMP_Taxonomy_T1_18JUNE.qza \
+      --o-visualization taxa-bar-plots.qzv
