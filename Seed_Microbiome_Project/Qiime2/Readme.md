@@ -312,8 +312,8 @@ Verify that the classifier works by classifying the representative sequences in 
       --o-classification T1_SMP_taxonomy_dynamic_all.qza
 
           qiime metadata tabulate \
-      --m-input-file T1_SMP_taxonomy_dynamic_all.qza \
-      --o-visualization T1_SMP_taxonomy_dynamic_all.qzv
+      --m-input-file T2_SMP_taxonomy_dynamic_all.qza \
+      --o-visualization T2_SMP_taxonomy_dynamic_all.qzv
 
 
 # Analyzing feature tables
@@ -321,8 +321,8 @@ Verify that the classifier works by classifying the representative sequences in 
 ## Taxonomic analysis/visualization
     qiime taxa barplot \
     --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
-    --i-taxonomy T1_SMP_taxonomy_dynamic_all.qza \
-    --o-visualization T1_taxa-bar-plots.qzv
+    --i-taxonomy  T2_SMP_taxonomy_dynamic_all.qza \
+    --o-visualization  T2_SMP_taxonomy_dynamic_all_barplot.qzv
 
 ## building phylogenetic tree
 qiime phylogeny align-to-tree-mafft-fasttree \
