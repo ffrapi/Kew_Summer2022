@@ -11,8 +11,15 @@ For visualizing qza, qzv files: https://view.qiime2.org/
 
     conda activate qiime2-amplicon-2024.2
     #conda activate qiime2-shotgun-2024.2
+## 0. Getting started
+It is important to keep the directory you are working in tidy and consistent. In the following code, I will use the names of folders and files that I used when analyzing my data. <br>
+Before you start your analysis, create one main directory called "SMP_2024". <br>
+In this directory, create 2 further folders named "importing_SMP_data" and "FREE_NAME". In the first folder, transfer all your raw sequences while making sure that nothing else exists in that folder. In the second folder, feel free to name it as you would like. Here I will use T5_21JUNE2024 - that indicates my 5th trial of this analysis and the date I started this trial. <br>
+Now you are ready to go! <br>
+
 
 ## 1. Importing your data
+
 **Source**: https://docs.qiime2.org/2024.5/tutorials/importing/
 
 **Format description** <br>
@@ -21,38 +28,40 @@ the sample identifier, the barcode sequence or a barcode identifier, the lane nu
 
 One of my example files: ITS-WS1_S45_L001_R1_001 + ITS-WS1_S45_L001_R2_001  <br>
 **Note**: My samples are already demultiplexed so I will indicate this in the output file <br>
+Make sure to change the input and output path to yours:
 
-    qiime tools import  --type 'SampleData[PairedEndSequencesWithQuality]' --input-path /home/frapi/SMP_2024/importing_SMP_data   --input-format CasavaOneEightSingleLanePerSampleDirFmt --output-path /home/frapi/SMP_2024/T3_4JUNE/SMP_demux-paired-end_FP.qza
+    qiime tools import  --type 'SampleData[PairedEndSequencesWithQuality]' --input-path /home/frapi/SMP_2024/importing_SMP_data/   --input-format CasavaOneEightSingleLanePerSampleDirFmt --output-path /home/frapi/SMP_2024/T5_21JUNE2024/S0_DADA2_FP.qza
 
 Check that your imported sequences are in the correct format - confirming that import worked as expected: 
 
-    qiime tools peek SMP_demux-paired-end_FP.qza
+    qiime tools peek S0_DADA2_FP.qza
 
 Generate summary of the demultiplexnig results. Here we will be able to see how many sequences were obtained per sample, and also to get a summary of the distribuion of sequence qualities at each position in your sequence data. 
 
     qiime demux summarize \
-      --i-data SMP_demux-paired-end_FP.qza \
-      --o-visualization SMP_demux-paired-end_FP.qzv
+      --i-data S0_DADA2_FP.qza \
+      --o-visualization S0_DADA2_FP.qzv
 
-This command will produce the .qzv file that you can view using either this website: https://view.qiime2.org/ or this command: 
+This command will produce the .qzv file that you can view using either this website: https://view.qiime2.org/ or this command (this command will not work on Ubuntu or linux): 
 
-      qiime tools view SMP_demux-paired-end_FP.qzv
+      qiime tools view S0_DADA2_FP.qzv
 
 ## 2: Cutadapt - removing non-biological sequences
 
     qiime cutadapt trim-paired \
-      --i-demultiplexed-sequences SMP_demux-paired-end_FP.qza \
+      --i-demultiplexed-sequences S0_DADA2_FP.qza \
       --p-cores 4 \
       --p-front-f TAGAGGAAGTAAAAGTCGTAA \
       --p-front-r CWGYGTTCTTCATCGATG \
-      --o-trimmed-sequences SMP_demux-paired-end_cutadapt_FP.qza \
+      --o-trimmed-sequences S1_DADA2_FP.qza \
       --verbose
 
-*does not work for now 
+      
+Convert the file to .qzv and check the quality read profiles - you will see that the first reads will change. 
 
         qiime demux summarize \
-              --i-data SMP_demux-paired-end_cutadapt_FP.qza \
-              --o-visualization SMP_demux-paired-end_cutadapt_FP.qzv
+              --i-data S1_DADA2_FP.qza \
+              --o-visualization S1_DADA2_FP.qzv
 
 ## 3. Denoising using DADA2 plugin 
 
@@ -60,34 +69,50 @@ This command will produce the .qzv file that you can view using either this webs
 
 DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data. The parameters selected here were based on the read quality plots and prior testing of the different parameters (See DADA2-denoising_trials_Readme.md)  <br>
 
-
-### Reducing truncation length 
+#For ITS sequencing, it is usually undesirable to truncate reads to a fixed length due to the large length variation at that locus. That is OK, just leave out truncLen. See the DADA2 ITS workflow for more information
 
      qiime dada2 denoise-paired \
-          --i-demultiplexed-seqs SMP_demux-paired-end_cutadapt_FP.qza \
-          --p-trim-left-f 6 \
-          --p-trim-left-r 6 \
-          --p-trunc-len-f 240 \
-          --p-trunc-len-r 240 \
-          --o-representative-sequences 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
-          --o-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
-          --o-denoising-stats 6_SMP_DADA2_stats_Trim6_Trunc240_FP.qza
+          --i-demultiplexed-seqs S1_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 0 \
+          --p-trunc-len-r 0 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2_DADA2_FeatureTable_FP_T1.qza \
+          --o-table S2_DADA2_Table_FP_T1.qza \
+          --o-denoising-stats S2_DADA2_stats_FP_T1.qza
+
+Denoising samples that have not been through cutadapt - i.e. non biological parts of the reads have not been removed - for comparison purposes only.
+           
+        qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs S0_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 0 \
+          --p-trunc-len-r 0 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2.0_DADA2_FeatureTable_FP_T1.qza \
+          --o-table S2.0_DADA2_Table_FP_T1.qza \
+          --o-denoising-stats S2.0_DADA2_stats_FP_T1.qza
 
 Generate summaries for the feature table, the corresponding feature sequences and DADA2 denoising statistics. 
 
-    qiime feature-table summarize \
-      --i-table SMP_DADA2_table_Trim25_Trunc300_FP.qza \
-      --o-visualization SMP_DADA2_table_Trim25_Trunc300_FP.qzv 
+    qiime feature-table tabulate-seqs \
+      --i-data S2_DADA2_FeatureTable_FP_T1.qza \
+      --o-visualization S2_DADA2_FeatureTable_FP_T1.qzv
+      
+      qiime feature-table summarize \
+      --i-table S2_DADA2_Table_FP_T1.qza \
+      --o-visualization S2_DADA2_Table_FP_T1.qzv
      # --m-sample-metadata-file sample-metadata.tsv
     
-    qiime feature-table tabulate-seqs \
-      --i-data SMP_DADA2_Trim25_Trunc250_FP.qza \
-      --o-visualization SMP_DADA2_Trim25_Trunc250_FP.qzv
-    
     qiime metadata tabulate \
-      --m-input-file SMP_DADA2_stats_Trim25_Trunc300_FP.qza \
-      --o-visualization SMP_DADA2_stats_Trim25_Trunc300_FP.qzv
-
+      --m-input-file S2_DADA2_stats_FP_T1.qza \
+      --o-visualization S2_DADA2_stats_FP_T1.qzv
 
 
 # 4: Taxonomic assignment
