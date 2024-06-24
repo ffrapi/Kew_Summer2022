@@ -10,6 +10,8 @@ For visualizing qza, qzv files: https://view.qiime2.org/
 ## Before you start: Activate qiime2 plugin in your terminal
 
     conda activate qiime2-amplicon-2024.2
+     conda activate qiime2-amplicon-2024.5
+
     #conda activate qiime2-shotgun-2024.2
 ## 0. Getting started
 It is important to keep the directory you are working in tidy and consistent. In the following code, I will use the names of folders and files that I used when analyzing my data. <br>
@@ -75,14 +77,14 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
           --i-demultiplexed-seqs S1_DADA2_FP.qza \
           --p-trim-left-f 0 \
           --p-trim-left-r 0 \
-          --p-trunc-len-f 0 \
-          --p-trunc-len-r 0 \
+          --p-trunc-len-f 301 \
+          --p-trunc-len-r 301 \
           --p-max-ee-f 2.0 \
           --p-max-ee-r 2.0 \
           --p-trunc-q 2 \
-          --o-representative-sequences S2_DADA2_FeatureTable_FP_T1.qza \
-          --o-table S2_DADA2_Table_FP_T1.qza \
-          --o-denoising-stats S2_DADA2_stats_FP_T1.qza
+          --o-representative-sequences S2_DADA2_FeatureTable_FP_T2.qza \
+          --o-table S2_DADA2_Table_FP_T2.qza \
+          --o-denoising-stats S2_DADA2_stats_FP_T2.qza
 
 Denoising samples that have not been through cutadapt - i.e. non biological parts of the reads have not been removed - for comparison purposes only.
            
