@@ -196,3 +196,63 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
       --m-input-file  8_SMP_DADA2_stats_Trim6_Trunc200_FP.qza \
       --o-visualization   8_SMP_DADA2_stats_Trim6_Trunc200_FP.qzv
 
+#### TRYING AGAIN - NEW TRIALS 
+
+### Trial 1.0: No cutadapt, trim=0, trunc=0
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs S0_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 0 \
+          --p-trunc-len-r 0 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2.0_DADA2_FeatureTable_FP_T1.qza \
+          --o-table S2.0_DADA2_Table_FP_T1.qza \
+          --o-denoising-stats S2.0_DADA2_stats_FP_T1.qza
+
+
+### Trial 1: Cutadapt, trim=0, trunc=0
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs S1_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 0 \
+          --p-trunc-len-r 0 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2_DADA2_FeatureTable_FP_T1.qza \
+          --o-table S2_DADA2_Table_FP_T1.qza \
+          --o-denoising-stats S2.0_DADA2_stats_FP_T1.qza
+
+
+### Trial 2: cutadapt, trim=0, trunc=301
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs S1_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 301 \
+          --p-trunc-len-r 301 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2_DADA2_FeatureTable_FP_T2.qza \
+          --o-table S2_DADA2_Table_FP_T2.qza \
+          --o-denoising-stats S2_DADA2_stats_FP_T2.qza
+
+### Trial 2.0: no cutadapt, trim=0, trunc=301
+ qiime dada2 denoise-paired \
+          --i-demultiplexed-seqs S0_DADA2_FP.qza \
+          --p-trim-left-f 0 \
+          --p-trim-left-r 0 \
+          --p-trunc-len-f 301 \
+          --p-trunc-len-r 301 \
+          --p-max-ee-f 2.0 \
+          --p-max-ee-r 2.0 \
+          --p-trunc-q 2 \
+          --o-representative-sequences S2.0_DADA2_FeatureTable_FP_T2.qza \
+          --o-table S2.0_DADA2_Table_FP_T2.qza \
+          --o-denoising-stats S2.0_DADA2_stats_FP_T2.qza
+
