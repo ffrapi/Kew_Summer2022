@@ -77,14 +77,14 @@ DADA2 is a pipeline for detecting and correcting Illumina amplicon sequence data
           --i-demultiplexed-seqs S1_DADA2_FP.qza \
           --p-trim-left-f 0 \
           --p-trim-left-r 0 \
-          --p-trunc-len-f 301 \
-          --p-trunc-len-r 301 \
+          --p-trunc-len-f 0 \
+          --p-trunc-len-r 0 \
           --p-max-ee-f 2.0 \
           --p-max-ee-r 2.0 \
           --p-trunc-q 2 \
-          --o-representative-sequences S2_DADA2_FeatureTable_FP_T2.qza \
-          --o-table S2_DADA2_Table_FP_T2.qza \
-          --o-denoising-stats S2_DADA2_stats_FP_T2.qza
+          --o-representative-sequences S2_DADA2_FeatureTable_FP_T1.qza \
+          --o-table S2_DADA2_Table_FP_T1.qza \
+          --o-denoising-stats S2_DADA2_stats_FP_T1.qza
 
 Denoising samples that have not been through cutadapt - i.e. non biological parts of the reads have not been removed - for comparison purposes only.
            
@@ -204,16 +204,17 @@ Verify that the classifier works by classifying the representative sequences in 
 
 
 
- qiime feature-classifier classify-sklearn \
-      --i-classifier /home/frapi/SMP_2024/T3_4JUNE/training-feature-classifiers/sh_qiime_release_04.04.2024/UNITE_classifier_ML700_TL_0.qza \
-      --i-reads 6_SMP_DADA2_Trim6_Trunc240_FP.qza \
-      --o-classification 6_SMP_Taxonomy_T1_18JUNE.qza
-    
+### Pre-trained classifiers
+     qiime feature-classifier classify-sklearn \
+      --i-classifier /home/fpi10kg/SMP_2024/pre_trained_classifiers/V2024.2/unite_ver10_99_all_04.04.2024-Q2-2024.2.qza \
+      --i-reads S2_DADA2_FeatureTable_FP_T1.qza \
+      --o-classification S3_DADA2_FeatureTable_FP_T1.qza
+      
     qiime metadata tabulate \
-      --m-input-file 6_SMP_Taxonomy_T1_18JUNE.qza \
-      --o-visualization 6_SMP_Taxonomy_T1_18JUNE.qzv
+      --m-input-file S3_DADA2_FeatureTable_FP_T1.qza \
+      --o-visualization S4_DADA2_Taxonomy_FP_T1.qzv
 
           qiime taxa barplot \
-      --i-table 6_SMP_DADA2_table_Trim6_Trunc240_FP.qza \
-      --i-taxonomy 6_SMP_Taxonomy_T1_18JUNE.qza \
-      --o-visualization taxa-bar-plots.qzv
+      --i-tableS2_DADA2_Table_FP_T1.qza \
+      --i-taxonomy S4_DADA2_Taxonomy_FP_T1.qzv \
+      --o-visualization S4_DADA2_taxa_barplot_FP_T1.qzv
