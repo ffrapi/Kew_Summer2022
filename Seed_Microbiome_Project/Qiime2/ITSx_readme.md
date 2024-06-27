@@ -48,7 +48,10 @@ different clades. itsxpress trim-pair-output-unmerged returns the unmerged, trim
       --p-threads 16 \
       --o-trimmed S1.1_DADA2_FP_99.5.qza
 
-  
+     qiime demux summarize \
+      --i-data S1.1_DADA2_FP_99.5.qza \
+      --o-visualization S1.1_DADA2_FP_99.5.qzv
+      
   #### 100% clustering: 
       qiime itsxpress trim-pair-output-unmerged\
       --i-per-sample-sequences S0_DADA2_FP.qza \
@@ -58,7 +61,8 @@ different clades. itsxpress trim-pair-output-unmerged returns the unmerged, trim
       --p-threads 16 \
       --o-trimmed S1.1_DADA2_FP_100.qza
     
-
+    
+  
 ### 3: Identify sequence variants using DADA2
     qiime dada2 denoise-paired \
       --i-demultiplexed-seqs S1.1_DADA2_FP_99.5.qza \
