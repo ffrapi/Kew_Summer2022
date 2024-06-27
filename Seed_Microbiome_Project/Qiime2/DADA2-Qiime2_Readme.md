@@ -204,17 +204,29 @@ Verify that the classifier works by classifying the representative sequences in 
 
 
 
-### Pre-trained classifiers
-     qiime feature-classifier classify-sklearn \
-      --i-classifier /home/fpi10kg/SMP_2024/pre_trained_classifiers/V2024.2/unite_ver10_99_all_04.04.2024-Q2-2024.2.qza \
-      --i-reads S2_DADA2_FeatureTable_FP_T1.qza \
-      --o-classification S3_DADA2_FeatureTable_FP_T1.qza
-      
-    qiime metadata tabulate \
-      --m-input-file S3_DADA2_FeatureTable_FP_T1.qza \
-      --o-visualization S4_DADA2_Taxonomy_FP_T1.qzv
+### Pre-trained classifiers - 99 all dataset 
 
-          qiime taxa barplot \
-      --i-tableS2_DADA2_Table_FP_T1.qza \
-      --i-taxonomy S4_DADA2_Taxonomy_FP_T1.qzv \
-      --o-visualization S4_DADA2_taxa_barplot_FP_T1.qzv
+     qiime feature-classifier classify-sklearn \
+      --i-classifier /home/fpi10kg/SMP_2024/pre_trained_classifiers/V2024.5/unite_ver10_99_all_04.04.2024-Q2-2024.5.qza \
+      --i-reads S2_DADA2_FeatureTable_FP_T1.qza \
+      --o-classification S3_DADA2_Taxonomy_FP_T1_99all.qza
+      
+      qiime metadata tabulate \
+      --m-input-file  S3_DADA2_Taxonomy_FP_T1_99all.qza \
+      --o-visualization S3_DADA2_Taxonomy_FP_T1_99all.qzv
+      
+        qiime taxa barplot \
+      --i-table S2_DADA2_Table_FP_T1.qza \
+      --i-taxonomy S3_DADA2_Taxonomy_FP_T1_99all.qza \
+      --o-visualization S4_DADA2_taxa_barplot_FP_T1_99all.qzv
+
+
+## Post-bionformatic analysis
+
+### Produce phylogenetic tree
+    qiime phylogeny align-to-tree-mafft-fasttree \
+      --i-sequences S2_DADA2_FeatureTable_FP_T1.qza \
+      --o-alignment X1_DADA2_Aligned_FP_T1.qza \
+      --o-masked-alignment X1_DADA2_MaskedAligned_FP_T1.qza \
+      --o-tree X1_DADA2_unrooted-tree_FP_T1.qza \
+      --o-rooted-tree X1_DADA2_rooted-tree_FP_T1.qza
